@@ -1,0 +1,105 @@
+// =====================================================================
+// AMARAM TV · Reglas de seguridad de Cloud Firestore
+// Pegar en Firebase → Firestore Database → Reglas → Publicar.
+//
+// Resumen:
+//  - Visitante: lee cursos publicados e instructores; crea leads con consentimiento.
+//  - Estudiante: lee/edita su perfil (sin cambiar su rol), lee sus inscripciones y pagos,
+//    lee lecciones SOLO de cursos donde tiene inscripción activa (paywall),
+//    guarda su propio progreso.
+//  - Admin (users/{uid}.role == "admin"): todo.
+//  - Apps Script escribe con la API REST como dueño del proyecto: salta estas reglas.
+//    Por eso enrollments y payments no se pueden crear desde el navegador.
+// =====================================================================
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---------- Funciones de ayuda ----------
+    function conSesion() { return request.auth != null; }
+    function esDueno(uid) { return conSesion() && request.auth.uid == uid; }
+    function esAdmin() {
+      return conSesion()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    function inscritoEn(courseId) {
+      let id = request.auth.uid + '_' + courseId;
+      return conSesion()
+        && exists(/databases/$(database)/documents/enrollments/$(id))
+        && get(/databases/$(database)/documents/enrollments/$(id)).data.status == 'active';
+    }
+    function correoValido(c) { return c is string && c.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$'); }
+
+    // ---------- users ----------
+    match /users/{uid} {
+      allow read: if esDueno(uid) || esAdmin();
+      allow create: if esDueno(uid)
+        && request.resource.data.role == 'student'
+        && request.resource.data.email == request.auth.token.email;
+      // El propio usuario puede editar nombre/foto pero NO su rol; el admin puede todo
+      allow update: if (esDueno(uid) && request.resource.data.role == resource.data.role) || esAdmin();
+      allow delete: if esAdmin();
+    }
+
+    // ---------- courses ----------
+    match /courses/{courseId} {
+      allow read: if resource.data.published == true || esAdmin();
+      allow write: if esAdmin();
+    }
+
+    // ---------- lessons (paywall) ----------
+    match /lessons/{lessonId} {
+      allow read: if esAdmin() || inscritoEn(resource.data.courseId);
+      allow write: if esAdmin();
+    }
+
+    // ---------- enrollments ----------
+    match /enrollments/{id} {
+      allow read: if esAdmin() || (conSesion() && resource.data.userId == request.auth.uid);
+      allow write: if esAdmin();   // el backend (Apps Script) escribe por REST sin pasar por aquí
+    }
+
+    // ---------- progress ----------
+    match /progress/{id} {
+      allow read: if esAdmin() || (conSesion() && resource.data.userId == request.auth.uid);
+      allow create: if conSesion()
+        && request.resource.data.userId == request.auth.uid
+        && id == request.auth.uid + '_' + request.resource.data.lessonId
+        && inscritoEn(request.resource.data.courseId);
+      allow update: if conSesion() && resource.data.userId == request.auth.uid;
+      allow delete: if esAdmin() || (conSesion() && resource.data.userId == request.auth.uid);
+    }
+
+    // ---------- payments ----------
+    match /payments/{id} {
+      allow read: if esAdmin() || (conSesion() && resource.data.userId == request.auth.uid);
+      allow write: if esAdmin();   // solo el backend crea pagos
+    }
+
+    // ---------- leads (CRM) ----------
+    match /leads/{id} {
+      allow create: if request.resource.data.consent == true
+        && correoValido(request.resource.data.email)
+        && request.resource.data.name is string && request.resource.data.name.size() >= 3
+        && request.resource.data.stage == 'nuevo';
+      allow read, update, delete: if esAdmin();
+    }
+
+    // ---------- interactions (CRM) ----------
+    match /interactions/{id} {
+      allow read, write: if esAdmin();
+    }
+
+    // ---------- instructors ----------
+    match /instructors/{id} {
+      allow read: if true;
+      allow write: if esAdmin();
+    }
+
+    // ---------- resources (costos, horarios) ----------
+    match /resources/{id} {
+      allow read, write: if esAdmin();
+    }
+  }
+}
