@@ -36,4 +36,19 @@ Hacerla antes del Demo Day y repetirla si cambia el backend o las reglas.
 - [ ] Los formularios piden consentimiento explícito (Ley 1581) y lo guardan con fecha.
 - [ ] `admin.html` y `pago.html` tienen `<meta name="robots" content="noindex">`.
 
-Resultado de la revisión: fecha __ · revisó __ · hallazgos: __
+## Resultado de la revisión · 2 de noviembre de 2026
+Revisó: equipo + Claude (verificación estática del repositorio y pruebas en el sitio publicado).
+
+| Punto | Resultado |
+|---|---|
+| Secretos en el repositorio | ✅ `git grep` no encuentra `integrity_`, `events_` ni `prv_`; `.gitignore` excluye archivos de secretos. Los secretos de Wompi viven solo en Propiedades del script. |
+| Reglas de Firestore publicadas | ✅ Publicadas el 2 nov; copia idéntica en `firestore.rules`. |
+| Paywall | ✅ Sin inscripción, `leccion.html` muestra el muro de pago; tras la compra de prueba el aula abrió. |
+| Rol | ✅ Un estudiante no puede cambiar su `role` (regla `update` en users); el rol admin se asignó desde la consola. |
+| Dominios autorizados | ✅ `localhost`, `*.firebaseapp.com`, `*.web.app`, `andresdromero6-alt.github.io`. |
+| Apps Script | ✅ Solo acepta `crearPago`, `verificarPago`, `nuevoLead` y eventos de Wompi; precio leído de Firestore; webhook verifica checksum y consulta la transacción; inscripción idempotente `uid_courseId`. |
+| XSS | ✅ Todo texto de la base de datos pasa por `escapar()` antes de insertarse. |
+| Consentimiento | ✅ Formularios con casilla Ley 1581 y fecha (`consentAt`). |
+| `noindex` | ✅ en `admin.html` y `pago.html`. |
+
+Pendiente: repetir el simulador de reglas en la consola (lectura de `lessons` sin inscripción → denegado) con un segundo usuario estudiante, y rotar las llaves de Wompi al pasar a producción.

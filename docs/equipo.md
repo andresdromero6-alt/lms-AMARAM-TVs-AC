@@ -26,9 +26,9 @@
 ## Cuentas del equipo
 | Herramienta | Estado |
 |-------------|--------|
-| GitHub (Student Developer Pack) | ☐ todos tienen acceso al repositorio |
-| Google / Firebase | ☐ proyecto creado, todos son editores |
-| Wompi (cuenta de comercio, modo pruebas) | ☐ credenciales de prueba y usuarios de prueba creados |
+| GitHub (Student Developer Pack) | ☑ repositorio creado (andresdromero6-alt); ☐ invitar a los otros dos integrantes |
+| Google / Firebase | ☑ proyecto `amaram-tv-95758` creado (andresdromero6@gmail.com); ☐ agregar a los demás como editores |
+| Wompi (cuenta de comercio, modo pruebas) | ☑ cuenta creada y sandbox activado; llaves de prueba en Apps Script |
 | Asistente de IA | ☐ cada integrante tiene su cuenta |
 
 _Fecha de conformación: noviembre de 2026._
