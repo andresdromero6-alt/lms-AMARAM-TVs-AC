@@ -5,7 +5,7 @@ Diez colecciones. Cada colección es una "pestaña", cada documento una "fila" y
 | Colección | ID del documento | Campos | Módulo | Quién escribe |
 |-----------|------------------|--------|--------|---------------|
 | `users` | `uid` de Firebase Auth | `name`, `email`, `role` (`student` \| `admin`), `photoUrl`, `createdAt` | Usuarios | La propia persona al registrarse (el rol solo lo cambia un admin o la consola) |
-| `courses` | slug (`montaje-smart-tv`) | `title`, `slug`, `promise`, `description`, `audience`, `category`, `level`, `price` (COP, número), `imageUrl`, `instructorId`, `instructorName`, `duration`, `lessonCount`, `published` (bool), `order`, `createdAt`, `updatedAt` | LMS | Administrador |
+| `courses` | slug (`montaje-smart-tv`) | `title`, `slug`, `promise`, `description`, `audience`, `category`, `level`, `price` (COP, número), `imageUrl`, `instructorId`, `instructorName`, `duration`, `lessonCount`, `syllabus` (lista pública de {moduleNumber, moduleName, order, title, durationMin}; se recalcula al guardar lecciones), `published` (bool), `order`, `createdAt`, `updatedAt` | LMS | Administrador |
 | `lessons` | `${courseId}_m1-l1` | `courseId`, `moduleNumber`, `moduleName`, `order`, `title`, `videoUrl`, `content` (texto/markdown simple), `materialUrl`, `materialName`, `durationMin` | LMS | Administrador |
 | `enrollments` | `${uid}_${courseId}` | `userId`, `courseId`, `status` (`active` \| `cancelled`), `paymentId`, `amount`, `source` (`wompi` \| `manual`), `createdAt` | LMS + Pagos | **Solo el backend** (Apps Script) o un admin (inscripción manual) |
 | `progress` | `${uid}_${lessonId}` | `userId`, `courseId`, `lessonId`, `completedAt` | LMS | El estudiante (solo si está inscrito) |

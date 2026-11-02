@@ -56,7 +56,9 @@ service cloud.firestore {
 
     // ---------- enrollments ----------
     match /enrollments/{id} {
-      allow read: if esAdmin() || (conSesion() && resource.data.userId == request.auth.uid);
+      // get: el propio usuario puede consultar su inscripción aunque no exista (id = uid_courseId)
+      allow get: if esAdmin() || (conSesion() && id.split('_')[0] == request.auth.uid);
+      allow list: if esAdmin() || (conSesion() && resource.data.userId == request.auth.uid);
       allow write: if esAdmin();   // el backend (Apps Script) escribe por REST sin pasar por aquí
     }
 

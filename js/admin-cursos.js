@@ -5,7 +5,7 @@ import { nuevoPanel, abrirFormulario, confirmar, escapar, aviso, irA } from "./a
 import { formatoCOP, formatoFecha, slug } from "./app.js";
 import {
   obtenerCursos, guardarCurso, borrarCurso, obtenerTodasLecciones, obtenerLecciones, guardarLeccion, borrarLeccion,
-  obtenerInstructores, guardarInstructor, obtenerUsuarios, obtenerTodasInscripciones, inscribirManual, cancelarInscripcion,
+  obtenerInstructores, guardarInstructor, obtenerUsuarios, obtenerTodasInscripciones, inscribirManual, cancelarInscripcion, sincronizarTemario,
   cambiarRol, aFecha, MODO_DEMO
 } from "./db.js";
 import { CURSOS, LECCIONES, INSTRUCTORES } from "./datos.js";
@@ -73,6 +73,7 @@ export async function pintarCursos() {
       for (const i of INSTRUCTORES) await guardarInstructor(i.id, i);
       for (const c of CURSOS) await guardarCurso(c.id, c);
       for (const l of LECCIONES) await guardarLeccion(l.id, l);
+      for (const c of CURSOS) await sincronizarTemario(c.id);
       aviso("Inventario cargado en Firestore", "exito"); pintarCursos();
     } catch (e) { aviso(e.message, "error"); }
   };
@@ -121,7 +122,7 @@ export async function pintarLecciones() {
     { name: "materialName", label: "Nombre del material", placeholder: "Lista de herramientas (PDF)" },
     { name: "durationMin", label: "Duración (min)", type: "number", min: 1 }
   ];
-  const actualizarConteo = async () => { const n = (await obtenerLecciones(filtro)).length; await guardarCurso(filtro, { lessonCount: n }); };
+  const actualizarConteo = () => sincronizarTemario(filtro);
   p.querySelector("#nueva").onclick = async () => {
     const ultimo = lecciones[lecciones.length - 1];
     const datos = await abrirFormulario({ titulo: "Nueva lección", campos, valores: { moduleNumber: ultimo?.moduleNumber || 1, moduleName: ultimo?.moduleName || "", order: (ultimo?.order || 10) + 1 } });
@@ -132,7 +133,7 @@ export async function pintarLecciones() {
     const b = e.target.closest("[data-accion]"); if (!b) return;
     const l = lecciones.find(x => x.id === b.dataset.id);
     try {
-      if (b.dataset.accion === "editar") { const d = await abrirFormulario({ titulo: "Editar lección", campos, valores: l }); if (d) { await guardarLeccion(l.id, d); aviso("Lección guardada", "exito"); pintarLecciones(); } }
+      if (b.dataset.accion === "editar") { const d = await abrirFormulario({ titulo: "Editar lección", campos, valores: l }); if (d) { await guardarLeccion(l.id, d); await actualizarConteo(); aviso("Lección guardada", "exito"); pintarLecciones(); } }
       if (b.dataset.accion === "borrar" && await confirmar(`¿Borrar "${l.title}"?`)) { await borrarLeccion(l.id); await actualizarConteo(); pintarLecciones(); }
     } catch (err) { aviso(err.message, "error"); }
   });

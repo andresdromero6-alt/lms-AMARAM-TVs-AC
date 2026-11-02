@@ -85,6 +85,20 @@ export async function obtenerTodasLecciones() {
   return listar("lessons");
 }
 export const guardarCurso = (id, datos) => guardarDoc("courses", id, datos);
+
+/** Temario público del curso (títulos, módulos y duración). Se guarda en el documento del curso
+ *  para que visitantes y estudiantes no inscritos puedan verlo sin leer la colección lessons (protegida). */
+export async function obtenerTemario(curso) {
+  if (Array.isArray(curso?.syllabus) && curso.syllabus.length) return [...curso.syllabus].sort((a, b) => a.order - b.order);
+  try { return (await obtenerLecciones(curso.id)).map(resumenLeccion); } catch { return []; }
+}
+const resumenLeccion = (l) => ({ id: l.id, moduleNumber: l.moduleNumber, moduleName: l.moduleName, order: l.order, title: l.title, durationMin: l.durationMin || null });
+/** Recalcula lessonCount y syllabus del curso a partir de sus lecciones (solo admin). */
+export async function sincronizarTemario(courseId) {
+  const lecciones = await obtenerLecciones(courseId);
+  await guardarCurso(courseId, { lessonCount: lecciones.length, syllabus: lecciones.map(resumenLeccion) });
+  return lecciones.length;
+}
 export const borrarCurso = (id) => borrarDoc("courses", id);
 export const guardarLeccion = (id, datos) => guardarDoc("lessons", id, datos);
 export const borrarLeccion = (id) => borrarDoc("lessons", id);
@@ -130,8 +144,10 @@ export async function obtenerInscripciones(uid) {
 }
 export async function tieneInscripcion(uid, courseId) {
   if (MODO_DEMO) return false;
-  const ins = await leer("enrollments", idInscripcion(uid, courseId));
-  return !!ins && ins.status === "active";
+  try {
+    const ins = await leer("enrollments", idInscripcion(uid, courseId));
+    return !!ins && ins.status === "active";
+  } catch (err) { console.warn("tieneInscripcion:", err.message); return false; }
 }
 export async function inscribirManual(uid, courseId, { amount = 0, source = "manual" } = {}) {
   return guardarDoc("enrollments", idInscripcion(uid, courseId), {

@@ -5,7 +5,7 @@
 // o crear el pago en Wompi a través de Apps Script.
 // =====================================================================
 import { $, parametro, escapar, formatoCOP, aviso, sesionLista, usuarioActual, perfilActual } from "./app.js";
-import { MODO_DEMO, obtenerCurso, obtenerLecciones, obtenerInstructores, tieneInscripcion } from "./db.js";
+import { MODO_DEMO, obtenerCurso, obtenerTemario, obtenerInstructores, tieneInscripcion } from "./db.js";
 import { PAGOS_ACTIVOS } from "./firebase-config.js";
 import { temario, conectarFormularioInteres } from "./componentes.js";
 import { crearPago } from "./pagos.js";
@@ -32,14 +32,19 @@ if (!curso || (curso.published === false && perfilActual()?.role !== "admin")) {
   $("#dato-lecciones").textContent = `${curso.lessonCount || "—"} lecciones en video`;
   $("#detalle").hidden = false;
 
-  // Temario e instructor en paralelo
-  const [lecciones, instructores] = await Promise.all([obtenerLecciones(curso.id), obtenerInstructores()]);
-  $("#temario").innerHTML = lecciones.length ? temario(lecciones) : `<div class="acordeon__cuerpo" style="padding:1rem">Temario en preparación.</div>`;
-  if (!curso.lessonCount && lecciones.length) $("#dato-lecciones").textContent = `${lecciones.length} lecciones en video`;
-  const ins = instructores.find(i => i.id === curso.instructorId);
-  $("#instructor").innerHTML = ins
-    ? `<h3 class="mb-0">${escapar(ins.name)}</h3><p class="texto-sm texto-suave">${escapar(ins.specialty || "")}</p><p class="mb-0">${escapar(ins.bio || "")}</p>`
-    : `<h3 class="mb-0">${escapar(curso.instructorName || "Instructor AMARAM TV")}</h3>`;
+  // Temario público (guardado en el curso) e instructor. Ningún fallo aquí debe romper el botón Comprar.
+  try {
+    const lecciones = await obtenerTemario(curso);
+    $("#temario").innerHTML = lecciones.length ? temario(lecciones) : `<div class="acordeon__cuerpo" style="padding:1rem">Temario en preparación.</div>`;
+    if (!curso.lessonCount && lecciones.length) $("#dato-lecciones").textContent = `${lecciones.length} lecciones en video`;
+  } catch (err) { console.warn("Temario:", err.message); $("#temario").innerHTML = `<div class="acordeon__cuerpo" style="padding:1rem">Temario en preparación.</div>`; }
+  try {
+    const instructores = await obtenerInstructores();
+    const ins = instructores.find(i => i.id === curso.instructorId);
+    $("#instructor").innerHTML = ins
+      ? `<h3 class="mb-0">${escapar(ins.name)}</h3><p class="texto-sm texto-suave">${escapar(ins.specialty || "")}</p><p class="mb-0">${escapar(ins.bio || "")}</p>`
+      : `<h3 class="mb-0">${escapar(curso.instructorName || "Instructor AMARAM TV")}</h3>`;
+  } catch (err) { console.warn("Instructor:", err.message); $("#instructor").innerHTML = `<h3 class="mb-0">${escapar(curso.instructorName || "Instructor AMARAM TV")}</h3>`; }
 
   // Botón comprar
   const zona = $("#zona-compra"), boton = $("#boton-comprar"), nota = $("#nota-pago");
@@ -48,7 +53,7 @@ if (!curso || (curso.published === false && perfilActual()?.role !== "admin")) {
 
   if (MODO_DEMO) {
     boton.addEventListener("click", () => aviso("Modo demo: los pagos se activan cuando el equipo configura Firebase y Apps Script.", "error"));
-  } else if (usuario && await tieneInscripcion(usuario.uid, curso.id)) {
+  } else if (usuario && await tieneInscripcion(usuario.uid, curso.id).catch(() => false)) {
     zona.innerHTML = `<a class="boton boton--primario boton--bloque boton--grande" href="leccion.html?curso=${encodeURIComponent(curso.id)}">Ir al aula</a>`;
     nota.textContent = "Ya tienes acceso a este curso. ¡Sigue avanzando!";
   } else if (!usuario) {
