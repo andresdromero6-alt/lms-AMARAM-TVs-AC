@@ -1,0 +1,60 @@
+ID,Sprint,Corte,Actividad,Módulo,Rol responsable,Prioridad,Tamaño,Criterio de aceptación,Estado
+S0-01,Sprint 0 · Preparar el terreno,Corte 1,Formar el equipo y asignar roles Scrum,Gestión ágil,Scrum Master,Obligatorio,S,"Acta en /docs/equipo.md con integrantes, roles y medio de contacto.",Por hacer
+S0-02,Sprint 0 · Preparar el terreno,Corte 1,"Crear cuentas: GitHub (Student Pack), Google/Firebase, cuenta de desarrollador de la pasarela de pago y asistente de IA",Configuración,Todos,Obligatorio,S,Cada integrante confirma que entra a las cuatro herramientas.,Por hacer
+S0-03,Sprint 0 · Preparar el terreno,Corte 1,Crear el repositorio público con README e invitar al equipo y al profesor,GitHub,Scrum Master,Obligatorio,S,Repositorio lms-nombredemarca creado; todos aparecen en Collaborators.,Por hacer
+S0-04,Sprint 0 · Preparar el terreno,Corte 1,Crear la estructura de carpetas y los archivos base,GitHub,Frontend,Obligatorio,S,"Existen /css, /js, /img, /backend, /docs y los 7 archivos HTML vacíos.",Por hacer
+S0-05,Sprint 0 · Preparar el terreno,Corte 1,Hacer el inventario de cursos prediseñados,Contenido,Product Owner,Obligatorio,M,"/docs/cursos.md con nombre, promesa, público, precio, módulos, lecciones e instructor de cada curso.",Por hacer
+S0-06,Sprint 0 · Preparar el terreno,Corte 1,Elegir la ruta tecnológica y escribir CONTEXTO.md,Arquitectura,Datos y backend,Obligatorio,S,"CONTEXTO.md con ruta, marca, estructura de carpetas y reglas para la IA.",Por hacer
+S0-07,Sprint 0 · Preparar el terreno,Corte 1,Crear el tablero en GitHub Projects y cargar el backlog como Issues,Gestión ágil,Scrum Master,Obligatorio,M,Tablero con 5 columnas; Issues del sprint 1 creados con Milestone.,Por hacer
+S0-08,Sprint 0 · Preparar el terreno,Corte 1,Planear el sprint 1,Gestión ágil,Product Owner,Obligatorio,S,Cada Issue del sprint 1 tiene responsable y tamaño.,Por hacer
+S1-01,Sprint 1 · Diseñar y maquetar,Corte 1,Dibujar el mapa del sitio con las 13 pantallas,Experiencia (UX),Diseño,Obligatorio,S,Diagrama en /docs que muestra cómo se enlazan las pantallas.,Por hacer
+S1-02,Sprint 1 · Diseñar y maquetar,Corte 1,Hacer los wireframes de las 5 pantallas clave,Experiencia (UX),Diseño,Obligatorio,M,"Inicio, catálogo, detalle, mis cursos y lección en Figma o foto en /docs.",Por hacer
+S1-03,Sprint 1 · Diseñar y maquetar,Corte 1,Definir la guía de estilo de la marca,Marca,Diseño,Obligatorio,M,"Logo, colores hex, 2 tipografías, botones y tarjetas; variables en css/estilos.css.",Por hacer
+S1-04,Sprint 1 · Diseñar y maquetar,Corte 1,Construir la landing page con IA,Mercadeo,Frontend,Obligatorio,L,"Header, hero, beneficios, cursos destacados, FAQ y footer; se ve bien en celular y el CTA lleva al catálogo.",Por hacer
+S1-05,Sprint 1 · Diseñar y maquetar,Corte 1,Construir el catálogo de cursos con tarjetas y filtro,LMS,Frontend,Obligatorio,M,Muestra todos los cursos de js/datos.js y el filtro por categoría funciona.,Por hacer
+S1-06,Sprint 1 · Diseñar y maquetar,Corte 1,Construir la página de detalle del curso,LMS,Frontend,Obligatorio,M,"Cada tarjeta abre su detalle: temario, instructor, precio y botón Comprar (aún inactivo).",Por hacer
+S1-07,Sprint 1 · Diseñar y maquetar,Corte 1,"Diseñar el formulario ""Quiero más información""",CRM,Frontend,Obligatorio,S,Valida nombre y correo e incluye la casilla de autorización de datos.,Por hacer
+S1-08,Sprint 1 · Diseñar y maquetar,Corte 1,Publicar el sitio en GitHub Pages,Publicación,Datos y backend,Obligatorio,S,El enlace público abre desde un celular.,Por hacer
+S1-09,Sprint 1 · Diseñar y maquetar,Corte 1,Registrar la bitácora de IA del sprint,Documentación,Todos,Obligatorio,S,"Al menos 3 prompts clave con herramienta, resultado y correcciones.",Por hacer
+S1-10,Sprint 1 · Diseñar y maquetar,Corte 1,Revisión y retrospectiva del sprint 1,Gestión ágil,Scrum Master,Obligatorio,S,"Demo en clase y acta de retro (mantener, mejorar, probar) en /docs.",Por hacer
+S2-01,Sprint 2 · Usuarios y datos,Corte 2,Crear el proyecto en Firebase y registrar la app web,Configuración,Datos y backend,Obligatorio,S,js/firebase-config.js conectado sin errores en la consola.,Por hacer
+S2-02,Sprint 2 · Usuarios y datos,Corte 2,Activar Authentication (correo y Google) y autorizar el dominio,Usuarios,Datos y backend,Obligatorio,S,El dominio de GitHub Pages aparece en Dominios autorizados.,Por hacer
+S2-03,Sprint 2 · Usuarios y datos,Corte 2,Construir registro e inicio de sesión,Usuarios,Frontend,Obligatorio,M,Registrarse crea un documento en users con role student; cerrar sesión funciona.,Por hacer
+S2-04,Sprint 2 · Usuarios y datos,Corte 2,Header que cambia según la sesión (Entrar / Mis cursos / Salir),Usuarios,Frontend,Deseable,S,Con sesión iniciada el header muestra el nombre y el botón Salir.,Por hacer
+S2-05,Sprint 2 · Usuarios y datos,Corte 2,Crear Firestore y publicar las reglas de seguridad iniciales,Datos,Datos y backend,Obligatorio,M,Un visitante no puede escribir en courses ni leer users de otros.,Por hacer
+S2-06,Sprint 2 · Usuarios y datos,Corte 2,Cargar los cursos y lecciones del inventario a Firestore,LMS,Product Owner,Obligatorio,M,Al menos 2 cursos completos en courses y lessons.,Por hacer
+S2-07,Sprint 2 · Usuarios y datos,Corte 2,Conectar catálogo y detalle a Firestore,LMS,Frontend,Obligatorio,M,Cambiar un precio en la consola se refleja en la página.,Por hacer
+S2-08,Sprint 2 · Usuarios y datos,Corte 2,Guardar los contactos del formulario en leads,CRM,Frontend,Obligatorio,M,"Cada envío crea un lead con etapa nuevo, origen, fecha y consentimiento.",Por hacer
+S2-09,Sprint 2 · Usuarios y datos,Corte 2,Crear el rol administrador y proteger admin.html,Usuarios,Datos y backend,Obligatorio,S,Un estudiante que abre admin.html es redirigido al inicio.,Por hacer
+S2-10,Sprint 2 · Usuarios y datos,Corte 2,"Bitácora de IA, revisión y retrospectiva del sprint 2",Gestión ágil,Todos,Obligatorio,S,Demo en vivo desde el enlace publicado y acta de retro.,Por hacer
+S3-01,Sprint 3 · Aula virtual,Corte 2,Subir videos (YouTube no listado) y materiales (Drive),Contenido,Product Owner,Obligatorio,M,Cada lección tiene su enlace de video o material guardado.,Por hacer
+S3-02,Sprint 3 · Aula virtual,Corte 2,Panel admin: crear y editar cursos,LMS,Frontend,Obligatorio,L,Un curso creado desde el panel aparece en el catálogo al publicarlo.,Por hacer
+S3-03,Sprint 3 · Aula virtual,Corte 2,"Panel admin: crear, ordenar y editar lecciones",LMS,Frontend,Obligatorio,L,Las lecciones se muestran en el orden definido por módulo.,Por hacer
+S3-04,Sprint 3 · Aula virtual,Corte 2,Construir la pantalla de lección,LMS,Frontend,Obligatorio,L,"Video, texto, material descargable y botones anterior y siguiente.",Por hacer
+S3-05,Sprint 3 · Aula virtual,Corte 2,Marcar lección como completada,LMS,Frontend,Obligatorio,M,Se guarda en progress y sigue marcada al volver a iniciar sesión.,Por hacer
+S3-06,Sprint 3 · Aula virtual,Corte 2,Construir Mis cursos con barra de progreso,LMS,Frontend,Obligatorio,M,El porcentaje = lecciones completadas ÷ lecciones del curso.,Por hacer
+S3-07,Sprint 3 · Aula virtual,Corte 2,Inscripción manual desde el panel (para pruebas),LMS,Datos y backend,Obligatorio,S,El administrador inscribe a un usuario y este ve el curso en Mis cursos.,Por hacer
+S3-08,Sprint 3 · Aula virtual,Corte 2,Reglas: solo los inscritos leen las lecciones,Seguridad,Datos y backend,Obligatorio,M,Un usuario sin inscripción que copia el enlace no ve el contenido.,Por hacer
+S3-09,Sprint 3 · Aula virtual,Corte 2,Construir Mi perfil con historial de compras,Usuarios,Frontend,Deseable,S,"Muestra nombre, correo y cursos comprados.",Por hacer
+S3-10,Sprint 3 · Aula virtual,Corte 2,"Bitácora de IA, revisión y retrospectiva del sprint 3",Gestión ágil,Todos,Obligatorio,S,Demo en vivo y acta de retro.,Por hacer
+S4-01,Sprint 4 · Pagos y CRM,Corte 3,"Crear la cuenta de desarrollador en la pasarela, credenciales y usuarios de prueba",Pagos,Datos y backend,Obligatorio,S,Credenciales de prueba y usuarios vendedor y comprador creados.,Por hacer
+S4-02,Sprint 4 · Pagos y CRM,Corte 3,Apps Script: guardar la clave secreta y crear la función crearPago,Pagos,Datos y backend,Obligatorio,M,Devuelve el enlace de pago con la referencia (usuario + curso) y las páginas de regreso; la clave está solo en Propiedades del script.,Por hacer
+S4-03,Sprint 4 · Pagos y CRM,Corte 3,Publicar Apps Script como aplicación web y guardar el código en /backend,Pagos,Datos y backend,Obligatorio,S,URL /exec funcionando y Code.gs copiado en el repositorio.,Por hacer
+S4-04,Sprint 4 · Pagos y CRM,Corte 3,"Botón Comprar y páginas de pago exitoso, pendiente y rechazado",Pagos,Frontend,Obligatorio,M,El botón lleva a la pasarela de pago y el regreso muestra la página correcta.,Por hacer
+S4-05,Sprint 4 · Pagos y CRM,Corte 3,Webhook: verificar el pago y crear la inscripción,Pagos,Datos y backend,Obligatorio,L,Un pago de prueba aprobado crea payments y enrollments y abre el curso sin intervención.,Por hacer
+S4-06,Sprint 4 · Pagos y CRM,Corte 3,Pasar el contacto a etapa Cliente al confirmar el pago,CRM,Datos y backend,Obligatorio,S,El lead del comprador cambia a cliente automáticamente.,Por hacer
+S4-07,Sprint 4 · Pagos y CRM,Corte 3,CRM: tabla de contactos con búsqueda y filtros,CRM,Frontend,Obligatorio,M,"Filtra por etapa, curso de interés y origen.",Por hacer
+S4-08,Sprint 4 · Pagos y CRM,Corte 3,CRM: embudo por etapas,CRM,Frontend,Obligatorio,M,"Columnas Nuevo, Contactado, Interesado, Cliente y Perdido; se puede cambiar la etapa.",Por hacer
+S4-09,Sprint 4 · Pagos y CRM,Corte 3,CRM: notas de seguimiento y próxima acción,CRM,Frontend,Obligatorio,M,"Cada contacto guarda interacciones con canal, nota y fecha de próxima acción.",Por hacer
+S4-10,Sprint 4 · Pagos y CRM,Corte 3,Correo automático de bienvenida a nuevos contactos,CRM,Datos y backend,Deseable,M,Apps Script envía el correo al crear un lead.,Por hacer
+S4-11,Sprint 4 · Pagos y CRM,Corte 3,"Bitácora de IA, revisión y retrospectiva del sprint 4",Gestión ágil,Todos,Obligatorio,S,Demo de una compra de prueba en vivo y acta de retro.,Por hacer
+S5-01,Sprint 5 · Recursos y lanzamiento,Corte 3,Módulo de instructores,Recursos,Frontend,Obligatorio,M,"Crear, editar y asignar instructores a cursos.",Por hacer
+S5-02,Sprint 5 · Recursos y lanzamiento,Corte 3,Módulo de recursos y costos por curso,Recursos,Frontend,Obligatorio,M,"Cada curso lista sus recursos con costo, responsable y estado.",Por hacer
+S5-03,Sprint 5 · Recursos y lanzamiento,Corte 3,Calendario de sesiones y horarios,Recursos,Frontend,Deseable,M,Vista por semana con instructor y curso.,Por hacer
+S5-04,Sprint 5 · Recursos y lanzamiento,Corte 3,"Reportes: ventas, inscritos, conversión, avance y margen",Reportes,Datos y backend,Obligatorio,L,Conversión = clientes ÷ contactos; margen = ingresos − costos por curso.,Por hacer
+S5-05,Sprint 5 · Recursos y lanzamiento,Corte 3,Páginas legales y autorización de datos personales,Legal,Product Owner,Obligatorio,S,"Política de datos (Ley 1581 de 2012), términos y reembolso enlazados en el footer.",Por hacer
+S5-06,Sprint 5 · Recursos y lanzamiento,Corte 3,Prueba con 5 usuarios reales,Calidad,Diseño,Obligatorio,M,Lista de hallazgos en /docs con lo que confundió a cada persona.,Por hacer
+S5-07,Sprint 5 · Recursos y lanzamiento,Corte 3,Corregir hallazgos y pulir el diseño responsive,Calidad,Frontend,Obligatorio,M,Los hallazgos críticos están resueltos y probados en celular.,Por hacer
+S5-08,Sprint 5 · Recursos y lanzamiento,Corte 3,Revisión de seguridad,Seguridad,Datos y backend,Obligatorio,S,Ninguna clave secreta en GitHub; reglas activas; admin protegido.,Por hacer
+S5-09,Sprint 5 · Recursos y lanzamiento,Corte 3,README final y video demo de 3 minutos,Documentación,Product Owner,Obligatorio,M,"README con descripción, enlace, ruta, integrantes; video enlazado.",Por hacer
+S5-10,Sprint 5 · Recursos y lanzamiento,Corte 3,Demo Day y retrospectiva final,Gestión ágil,Todos,Obligatorio,S,Presentación en vivo del flujo completo y acta de cierre.,Por hacer

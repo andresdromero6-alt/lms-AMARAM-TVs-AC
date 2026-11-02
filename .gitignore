@@ -1,0 +1,13 @@
+# Sistema
+.DS_Store
+Thumbs.db
+# Editores
+.vscode/
+.idea/
+# Claves y secretos: NUNCA se suben
+*.env
+.env*
+backend/.clasp.json
+backend/secretos*.json
+# Dependencias (no usamos, pero por si acaso)
+node_modules/
