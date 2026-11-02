@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultado del pago · AMARAM TV</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    .resultado { max-width: 560px; margin: 0 auto; text-align: center; }
+    .resultado__icono { width: 88px; height: 88px; border-radius: 50%; display: grid; place-items: center; margin: 0 auto var(--esp-4); font-size: 2.4rem; }
+    .resultado__icono--exito { background: var(--exito-suave); color: var(--exito); }
+    .resultado__icono--pendiente { background: var(--alerta-suave); color: var(--alerta); }
+    .resultado__icono--error { background: var(--error-suave); color: var(--error); }
+    .detalle-pago { text-align: left; font-size: var(--tam-sm); }
+    .detalle-pago dt { color: var(--texto-tenue); font-size: var(--tam-xs); text-transform: uppercase; letter-spacing: 0.06em; margin-top: var(--esp-3); }
+    .detalle-pago dd { margin: 0; }
+  </style>
+</head>
+<body>
+  <header id="header"></header>
+  <main>
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="tarjeta resultado">
+          <div class="resultado__icono" id="icono">⏳</div>
+          <h1 id="titulo">Verificando tu pago…</h1>
+          <p class="subtitulo" style="margin-inline:auto" id="texto">Estamos confirmando con Mercado Pago. Esto toma unos segundos.</p>
+          <div class="fila" style="justify-content:center" id="acciones"></div>
+          <dl class="detalle-pago mt-5" id="detalle" hidden></dl>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="footer"></footer>
+  <script type="module" src="js/pago.js"></script>
+</body>
+</html>
