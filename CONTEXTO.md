@@ -65,7 +65,6 @@ Si `js/firebase-config.js` todavía tiene los valores `REEMPLAZAR_...`, la plata
 
 ## Pendiente del equipo
 - Subir videos (YouTube no listado) y materiales (Drive) y pegar los enlaces en Admin → Lecciones.
-- Asignar responsables (Assignees) a los Issues abiertos en el tablero https://github.com/users/andresdromero6-alt/projects/1.
 - Revisar la política de reembolso en `legales.html` (5 días / 20 %) y confirmarla con el equipo.
 - Prueba con 5 usuarios reales, video demo de 3 minutos, Demo Day. Al lanzar: llaves de producción de Wompi y `WOMPI_ENV=prod`.
 
