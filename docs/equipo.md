@@ -27,8 +27,8 @@
 | Herramienta | Estado |
 |-------------|--------|
 | GitHub (Student Developer Pack) | ☑ repositorio creado (andresdromero6-alt); ☑ colaboradores: Abrahammtz15 (Abraham), louky-design-a (Andrés Camilo) |
-| Google / Firebase | ☑ proyecto `amaram-tv-95758` creado (andresdromero6@gmail.com); ☐ agregar a los demás como editores |
+| Google / Firebase | ☑ proyecto `amaram-tv-95758` creado (andresdromero6@gmail.com); ☑ los tres confirman cuenta de Google |
 | Wompi (cuenta de comercio, modo pruebas) | ☑ cuenta creada y sandbox activado; llaves de prueba en Apps Script |
-| Asistente de IA | ☐ cada integrante tiene su cuenta |
+| Asistente de IA | ☑ cada integrante tiene su cuenta |
 
 _Fecha de conformación: noviembre de 2026._
