@@ -54,6 +54,11 @@ Formato de cada entrada:
 **Resultado:** `js/admin-recursos.js`, `js/admin-reportes.js`, `legales.html`, esta bitácora, `docs/pruebas-usuarios.md`, `docs/seguridad.md`, `docs/despliegue.md` y el README final.
 **Corregí / aprendí:** _(completar por el equipo tras la prueba con 5 usuarios reales y el Demo Day)_.
 
+### Sprint 4–5 · 2026-11-02 · Andrés Romero + Claude (navegador integrado) · configuración real
+**Pedí:** "Realiza todo lo del backlog y los login y pagos", y luego "vamos a cambiar a Wompi".
+**Resultado:** la IA creó los 59 Issues con Milestones por API, creó el proyecto de Firebase (Authentication, Firestore, reglas), el proyecto de Apps Script (código, manifiesto, propiedades, implementación como app web), cambió el backend de Mercado Pago a Wompi y configuró la URL de eventos. Hicimos una compra de prueba con la tarjeta 4242: el webhook creó la inscripción y el aula se abrió sola.
+**Corregí / aprendí:** hay pasos que la IA no hace por seguridad y quedaron a cargo del equipo: iniciar sesión en Google/Wompi, aceptar condiciones, autorizar permisos OAuth, copiar las llaves secretas a las propiedades del script, cambiar el rol a admin en Firestore y escribir la tarjeta de prueba. Es la división correcta: la IA construye, el equipo custodia las credenciales.
+
 ---
 
 ## Entradas del equipo

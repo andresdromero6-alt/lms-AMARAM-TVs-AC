@@ -57,12 +57,17 @@ Si `js/firebase-config.js` todavía tiene los valores `REEMPLAZAR_...`, la plata
 - Sprint 4: Apps Script + Wompi (preferencia, webhook, verificación), `pago.html`, CRM con tabla/embudo/notas, correos.
 - Sprint 5: instructores, recursos y costos, calendario, reportes, documentación de pruebas, seguridad y despliegue.
 
-## Pendiente del equipo (no lo puede hacer la IA)
-- Configurar Firebase y pegar `firebaseConfig` (`docs/firebase.md`).
-- Crear el proyecto de Apps Script, propiedades del script y pegar `APPS_SCRIPT_URL` (`backend/README.md`).
+## Configurado y probado (2 nov 2026)
+- Firebase `amaram-tv-95758`: Authentication (correo + Google), Firestore con reglas publicadas, inventario cargado.
+- Apps Script `amaram-tv-backend` (v2, Wompi) implementado como app web; secretos en Propiedades del script.
+- Wompi en modo de pruebas con URL de eventos → `/exec`. Compra de prueba aprobada: creó `payments`, `enrollments`, lead en `cliente` y abrió el aula.
+- GitHub Pages activo; 59 Issues con Milestones creados.
+
+## Pendiente del equipo
 - Subir videos (YouTube no listado) y materiales (Drive) y pegar los enlaces en Admin → Lecciones.
-- Activar GitHub Pages, crear el tablero de Projects y correr `scripts/crear-issues.sh`.
-- Prueba con 5 usuarios reales, video demo de 3 minutos, Demo Day.
+- Crear el Board en GitHub Projects y asignar responsables a los Issues abiertos.
+- Reemplazar correo/WhatsApp de ejemplo en `js/firebase-config.js` y revisar la política de reembolso en `legales.html`.
+- Prueba con 5 usuarios reales, video demo de 3 minutos, Demo Day. Al lanzar: llaves de producción de Wompi y `WOMPI_ENV=prod`.
 
 ## Estamos trabajando en
 - Sprint 5: lanzamiento (configuración de cuentas, contenido real y pruebas con usuarios).
