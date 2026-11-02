@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Montaje de Smart TV">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#15325C"/><stop offset="1" stop-color="#0B1F3A"/></linearGradient></defs>
+  <rect width="640" height="360" fill="url(#g)"/>
+  <g opacity="0.12" stroke="#7EE8DC" stroke-width="1"><path d="M0 60h640M0 120h640M0 180h640M0 240h640M0 300h640"/><path d="M80 0v360M160 0v360M240 0v360M320 0v360M400 0v360M480 0v360M560 0v360"/></g>
+  <!-- soporte -->
+  <rect x="300" y="110" width="40" height="150" rx="6" fill="#1F4C8F"/>
+  <rect x="250" y="175" width="140" height="18" rx="4" fill="#2EC4B6"/>
+  <!-- pantalla -->
+  <rect x="150" y="80" width="340" height="200" rx="10" fill="#0B1F3A" stroke="#2EC4B6" stroke-width="6"/>
+  <rect x="164" y="94" width="312" height="172" rx="4" fill="#15325C"/>
+  <path d="M200 220c40-70 90-70 130 0s90 70 130 0" stroke="#2EC4B6" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <!-- nivel láser -->
+  <line x1="40" y1="180" x2="600" y2="180" stroke="#FF5A5F" stroke-width="2" stroke-dasharray="8 6" opacity="0.9"/>
+  <circle cx="40" cy="180" r="10" fill="#FF5A5F"/>
+  <!-- taladro -->
+  <g transform="translate(500 255) rotate(-20)"><rect x="0" y="0" width="80" height="26" rx="8" fill="#2EC4B6"/><rect x="20" y="24" width="22" height="40" rx="5" fill="#2EC4B6"/><rect x="80" y="8" width="40" height="10" rx="3" fill="#7EE8DC"/></g>
+  <text x="32" y="330" font-family="Jost, Futura, sans-serif" font-size="22" font-weight="700" fill="#7EE8DC">MONTAJE PROFESIONAL DE SMART TVs</text>
+</svg>
