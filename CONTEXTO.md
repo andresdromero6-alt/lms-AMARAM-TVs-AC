@@ -50,10 +50,22 @@ Detalle completo (módulos y lecciones) en `docs/cursos.md`.
 Si `js/firebase-config.js` todavía tiene los valores `REEMPLAZAR_...`, la plataforma funciona en **modo demo**: el catálogo lee `js/datos.js`, el login no está disponible y el botón Comprar muestra un aviso. Así el enlace de GitHub Pages funciona desde el Sprint 1.
 
 ## Ya funciona
-- (actualizar al cierre de cada sprint)
+- Sprint 0: repositorio, estructura, inventario de cursos, modelo de datos, backlog → Issues (`scripts/crear-issues.sh`).
+- Sprint 1: guía de estilo, inicio, catálogo con filtros, detalle con temario, formulario de interés, legales. Modo demo.
+- Sprint 2: login/registro (correo y Google), header con sesión, `firestore.rules`, leads en Firestore.
+- Sprint 3: Mis cursos con progreso, aula con video/material/completar, perfil con certificado, panel admin (cursos, lecciones, inscripciones, usuarios).
+- Sprint 4: Apps Script + Mercado Pago (preferencia, webhook, verificación), `pago.html`, CRM con tabla/embudo/notas, correos.
+- Sprint 5: instructores, recursos y costos, calendario, reportes, documentación de pruebas, seguridad y despliegue.
+
+## Pendiente del equipo (no lo puede hacer la IA)
+- Configurar Firebase y pegar `firebaseConfig` (`docs/firebase.md`).
+- Crear el proyecto de Apps Script, propiedades del script y pegar `APPS_SCRIPT_URL` (`backend/README.md`).
+- Subir videos (YouTube no listado) y materiales (Drive) y pegar los enlaces en Admin → Lecciones.
+- Activar GitHub Pages, crear el tablero de Projects y correr `scripts/crear-issues.sh`.
+- Prueba con 5 usuarios reales, video demo de 3 minutos, Demo Day.
 
 ## Estamos trabajando en
-- Sprint 0: preparar el terreno.
+- Sprint 5: lanzamiento (configuración de cuentas, contenido real y pruebas con usuarios).
 
 ## Reglas para la IA
 1. Responde en español.
