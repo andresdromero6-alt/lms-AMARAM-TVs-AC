@@ -7,7 +7,7 @@
 1. Entra al enlace desde tu celular y encuentra cuánto cuesta el curso de Smart TVs.
 2. Deja tus datos para pedir más información.
 3. Crea una cuenta.
-4. Compra el curso (te damos la tarjeta de prueba: Mastercard 5254 1336 7440 3564, CVV 123, vence 11/30, titular `APRO`).
+4. Compra el curso (te damos la tarjeta de prueba de Wompi: 4242 4242 4242 4242, cualquier CVV y fecha futura).
 5. Entra al aula, mira la primera lección y márcala como completada.
 6. Encuentra tu avance en Mis cursos.
 

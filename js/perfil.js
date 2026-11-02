@@ -20,7 +20,7 @@ if (usuario) {
     catch (err) { aviso("No se pudo guardar: " + err.message, "error"); }
   });
 
-  // Compras: combina pagos (Mercado Pago) e inscripciones manuales
+  // Compras: combina pagos (Wompi) e inscripciones manuales
   try {
     const [pagos, inscripciones, progreso] = await Promise.all([obtenerPagos(usuario.uid), obtenerInscripciones(usuario.uid), obtenerTodoProgresoUsuario(usuario.uid)]);
     const cursosCache = {};
@@ -29,7 +29,7 @@ if (usuario) {
     for (const p of pagos) filas.push({ fecha: aFecha(p.date || p.createdAt), titulo: (await curso(p.courseId))?.title || p.courseId, valor: p.amount, estado: p.status });
     for (const i of inscripciones) if (!pagos.some(p => p.courseId === i.courseId)) filas.push({ fecha: aFecha(i.createdAt), titulo: (await curso(i.courseId))?.title || i.courseId, valor: i.amount || 0, estado: i.source === "manual" ? "inscripción manual" : i.status });
     filas.sort((a, b) => (b.fecha?.getTime() || 0) - (a.fecha?.getTime() || 0));
-    const etiqueta = (s) => ({ approved: "insignia--exito", active: "insignia--exito", pending: "insignia--alerta", in_process: "insignia--alerta", rejected: "insignia--error", cancelled: "insignia--error" }[s] || "insignia--gris");
+    const etiqueta = (s) => ({ APPROVED: "insignia--exito", active: "insignia--exito", PENDING: "insignia--alerta", CREATED: "insignia--gris", DECLINED: "insignia--error", VOIDED: "insignia--error", ERROR: "insignia--error", cancelled: "insignia--error" }[s] || "insignia--gris");
     $("#compras").innerHTML = filas.length ? filas.map(f => `<tr><td>${formatoFecha(f.fecha)}</td><td>${escapar(f.titulo)}</td><td class="num">${formatoCOP(f.valor)}</td><td><span class="insignia ${etiqueta(f.estado)}">${escapar(f.estado)}</span></td></tr>`).join("") : `<tr><td colspan="4" class="texto-suave">Todavía no tienes compras. <a href="cursos.html">Ver cursos</a></td></tr>`;
 
     // Certificados

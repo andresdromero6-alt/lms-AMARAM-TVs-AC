@@ -149,9 +149,9 @@ export async function pintarInscripciones() {
   const p = nuevoPanel();
   p.innerHTML = `
     <div class="admin-cabecera"><h2>Inscripciones (${inscripciones.length})</h2><button class="boton boton--primario boton--sm" id="nueva" type="button">+ Inscribir manualmente</button></div>
-    <p class="texto-sm texto-suave">Las inscripciones por Mercado Pago las crea el backend automáticamente. La inscripción manual sirve para pruebas, becas o pagos por fuera de la plataforma.</p>
+    <p class="texto-sm texto-suave">Las inscripciones por Wompi las crea el backend automáticamente. La inscripción manual sirve para pruebas, becas o pagos por fuera de la plataforma.</p>
     <div class="tabla-envoltura"><table class="tabla"><thead><tr><th>Fecha</th><th>Estudiante</th><th>Curso</th><th>Origen</th><th class="num">Valor</th><th>Estado</th><th></th></tr></thead>
-    <tbody>${inscripciones.map(i => `<tr><td>${formatoFecha(aFecha(i.createdAt))}</td><td>${nombreU(i.userId)}</td><td>${escapar(tituloC(i.courseId))}</td><td><span class="insignia ${i.source === "mercadopago" ? "insignia--info" : "insignia--gris"}">${escapar(i.source || "manual")}</span></td><td class="num">${formatoCOP(i.amount)}</td><td><span class="insignia ${i.status === "active" ? "insignia--exito" : "insignia--error"}">${escapar(i.status)}</span></td>
+    <tbody>${inscripciones.map(i => `<tr><td>${formatoFecha(aFecha(i.createdAt))}</td><td>${nombreU(i.userId)}</td><td>${escapar(tituloC(i.courseId))}</td><td><span class="insignia ${i.source === "wompi" ? "insignia--info" : "insignia--gris"}">${escapar(i.source || "manual")}</span></td><td class="num">${formatoCOP(i.amount)}</td><td><span class="insignia ${i.status === "active" ? "insignia--exito" : "insignia--error"}">${escapar(i.status)}</span></td>
       <td class="acciones">${i.status === "active" ? `<button class="boton boton--fantasma boton--sm" data-cancelar="${escapar(i.id)}" type="button" style="color:var(--error)">Cancelar</button>` : `<button class="boton boton--fantasma boton--sm" data-reactivar="${escapar(i.id)}" type="button">Reactivar</button>`}</td></tr>`).join("") || `<tr><td colspan="7" class="texto-suave">Sin inscripciones todavía.</td></tr>`}</tbody></table></div>`;
 
   p.querySelector("#nueva").onclick = async () => {

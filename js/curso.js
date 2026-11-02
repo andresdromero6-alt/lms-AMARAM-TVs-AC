@@ -2,7 +2,7 @@
 // AMARAM TV · Detalle del curso
 // Muestra la información del curso y su temario; el botón Comprar decide
 // qué hacer según la sesión: pedir login, abrir el aula si ya está inscrito
-// o crear el pago en Mercado Pago a través de Apps Script.
+// o crear el pago en Wompi a través de Apps Script.
 // =====================================================================
 import { $, parametro, escapar, formatoCOP, aviso, sesionLista, usuarioActual, perfilActual } from "./app.js";
 import { MODO_DEMO, obtenerCurso, obtenerLecciones, obtenerInstructores, tieneInscripcion } from "./db.js";

@@ -1,7 +1,7 @@
 // =====================================================================
 // AMARAM TV · Puente con el backend (Apps Script) para pagos y correos
-// El frontend NUNCA habla con Mercado Pago directamente: le pide a Apps
-// Script que cree la preferencia de pago (allí vive el Access Token).
+// El frontend NUNCA habla con Wompi directamente: le pide a Apps
+// Script que cree la preferencia de pago (allí viven los secretos de Wompi).
 // Se envía como text/plain para evitar el "preflight" de CORS que Apps
 // Script no soporta; el script lee e.postData.contents y lo parsea.
 // =====================================================================
@@ -22,7 +22,7 @@ async function llamarBackend(accion, datos = {}) {
   return json;
 }
 
-/** Crea la preferencia en Mercado Pago y devuelve la URL de pago (init_point). */
+/** Construye el enlace de pago de Wompi y devuelve la URL de pago (init_point). */
 export async function crearPago({ courseId, uid, email, name }) {
   const r = await llamarBackend("crearPago", { courseId, uid, email, name, origen: location.origin + location.pathname.replace(/[^/]*$/, "") });
   return r.init_point;

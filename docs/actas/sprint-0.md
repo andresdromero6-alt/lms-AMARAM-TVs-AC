@@ -3,7 +3,7 @@
 **Fecha:** noviembre de 2026 · **Asistentes:** Abraham David Martínez Calderón, Andrés Camilo Mercado Marín, Andrés Romero
 
 ## Decisiones
-- Ruta tecnológica **A**: HTML/CSS/JS puro + Firebase Authentication + Firestore + Google Apps Script + **Mercado Pago**.
+- Ruta tecnológica **A**: HTML/CSS/JS puro + Firebase Authentication + Firestore + Google Apps Script + **Wompi** (Bancolombia). Nota: inicialmente se evaluó Mercado Pago; se cambió a Wompi en el Sprint 4.
 - Repositorio público `lms-AMARAM-TVs-AC`, publicado con GitHub Pages desde `main` / raíz.
 - Roles: ver `docs/equipo.md`. El rol Datos y backend se reparte entre los tres.
 - Inventario de cursos: 2 cursos, 4 módulos y 8 lecciones cada uno (`docs/cursos.md`).
@@ -15,7 +15,7 @@
 - [x] Inventario de cursos
 - [x] Backlog listo para cargar como Issues (`scripts/crear-issues.sh`)
 - [ ] Tablero en GitHub Projects con 5 columnas (lo crea el Scrum Master en la web de GitHub)
-- [ ] Cuentas: Firebase, Mercado Pago (cuentas de prueba), IA — confirmación de cada integrante
+- [ ] Cuentas: Firebase, Wompi (llaves de prueba), IA — confirmación de cada integrante
 
 ## Retrospectiva
 - **Mantener:** pedirle a la IA una sola tarea por conversación con el `CONTEXTO.md` pegado.

@@ -3,7 +3,7 @@
 Hacerla antes del Demo Day y repetirla si cambia el backend o las reglas.
 
 ## Claves y secretos
-- [ ] `MP_ACCESS_TOKEN` existe **solo** en Propiedades del script de Apps Script. Búsqueda en el repositorio: `git grep -n "APP_USR-\|TEST-[0-9]"` no devuelve nada.
+- [ ] `WOMPI_INTEGRITY_SECRET` y `WOMPI_EVENTS_SECRET` existen **solo** en Propiedades del script de Apps Script. Búsqueda en el repositorio: `git grep -n "integrity_\|events_\|prv_"` no devuelve nada.
 - [ ] `js/firebase-config.js` contiene solo la configuración pública de Firebase (apiKey, projectId…). Es normal que sea pública.
 - [ ] `.gitignore` excluye `*.env`, `backend/.clasp.json`, `backend/secretos*.json`.
 - [ ] Ningún archivo de la carpeta `docs/` incluye contraseñas de cuentas de prueba.
@@ -28,7 +28,7 @@ Hacerla antes del Demo Day y repetirla si cambia el backend o las reglas.
 ## Apps Script
 - [ ] La aplicación web se ejecuta "como yo" y el acceso es "cualquier usuario" (necesario para el webhook); el script **no acepta** acciones distintas a `crearPago`, `verificarPago` y `nuevoLead`.
 - [ ] `crearPago` toma el precio desde Firestore, nunca del cuerpo de la petición.
-- [ ] El webhook consulta el pago en `/v1/payments/{id}` antes de inscribir; no confía en el aviso.
+- [ ] El webhook consulta la transacción en `/v1/transactions/{id}` y verifica el checksum del evento antes de inscribir; no confía en el aviso.
 - [ ] Las inscripciones usan ID `uid_courseId` (idempotencia).
 
 ## Frontend

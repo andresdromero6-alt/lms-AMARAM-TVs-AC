@@ -11,7 +11,7 @@ export async function pintar() {
   const [cursos, pagos, inscripciones, leads, progreso, lecciones, recursos, usuarios] = await Promise.all([
     obtenerCursos({ soloPublicados: false }), obtenerTodosPagos(), obtenerTodasInscripciones(), obtenerLeads(), obtenerTodoProgreso(), obtenerTodasLecciones(), obtenerRecursos(), obtenerUsuarios()
   ]);
-  const aprobados = pagos.filter(p => p.status === "approved");
+  const aprobados = pagos.filter(p => p.status === "APPROVED");
   const ingresos = aprobados.reduce((s, p) => s + (Number(p.amount) || 0), 0);
   const activas = inscripciones.filter(i => i.status === "active");
   const clientes = leads.filter(l => l.stage === "cliente").length;
@@ -65,7 +65,7 @@ export async function pintar() {
     </div>
 
     <div class="tarjeta"><h3>Últimos pagos</h3>
-      <div class="tabla-envoltura"><table class="tabla"><thead><tr><th>Fecha</th><th>Correo</th><th>Curso</th><th class="num">Valor</th><th>Estado</th><th>ID Mercado Pago</th></tr></thead>
-      <tbody>${pagos.sort((a, b) => (aFecha(b.date)?.getTime() || 0) - (aFecha(a.date)?.getTime() || 0)).slice(0, 15).map(p => `<tr><td>${formatoFecha(aFecha(p.date || p.createdAt))}</td><td class="texto-sm">${escapar(p.email || p.userId)}</td><td class="texto-sm">${escapar(cursos.find(c => c.id === p.courseId)?.title || p.courseId)}</td><td class="num">${formatoCOP(p.amount)}</td><td><span class="insignia ${p.status === "approved" ? "insignia--exito" : p.status === "rejected" ? "insignia--error" : "insignia--alerta"}">${escapar(p.status)}</span></td><td class="texto-xs">${escapar(p.id)}</td></tr>`).join("") || `<tr><td colspan="6" class="texto-suave">Sin pagos registrados.</td></tr>`}</tbody></table></div>
+      <div class="tabla-envoltura"><table class="tabla"><thead><tr><th>Fecha</th><th>Correo</th><th>Curso</th><th class="num">Valor</th><th>Estado</th><th>ID Wompi</th></tr></thead>
+      <tbody>${pagos.sort((a, b) => (aFecha(b.date)?.getTime() || 0) - (aFecha(a.date)?.getTime() || 0)).slice(0, 15).map(p => `<tr><td>${formatoFecha(aFecha(p.date || p.createdAt))}</td><td class="texto-sm">${escapar(p.email || p.userId)}</td><td class="texto-sm">${escapar(cursos.find(c => c.id === p.courseId)?.title || p.courseId)}</td><td class="num">${formatoCOP(p.amount)}</td><td><span class="insignia ${p.status === "APPROVED" ? "insignia--exito" : ["DECLINED","VOIDED","ERROR"].includes(p.status) ? "insignia--error" : "insignia--alerta"}">${escapar(p.status)}</span></td><td class="texto-xs">${escapar(p.id)}</td></tr>`).join("") || `<tr><td colspan="6" class="texto-suave">Sin pagos registrados.</td></tr>`}</tbody></table></div>
     </div>`;
 }

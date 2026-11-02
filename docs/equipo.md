@@ -12,7 +12,7 @@
 | Andrés Camilo Mercado Marín | Mercadeo (Frontend / CRM) | Estrategia de conversión, integración del formulario de clientes (CRM), optimización de la landing page. Dirige a la IA en las pantallas. | _[completar]_ |
 | Andrés Romero | Publicidad (Diseño UX / UI) | Diseño de la experiencia de usuario, wireframes, guía de estilo visual, materiales publicitarios. | _[completar]_ |
 
-> El rol de **Datos y backend** (Firebase, Apps Script, Mercado Pago, reglas de seguridad) se reparte entre los tres integrantes; el responsable de cada tarea queda registrado en el Issue correspondiente. En equipos de 3 personas cada uno asume más de un rol: el rol dice de qué eres responsable, no qué es lo único que haces.
+> El rol de **Datos y backend** (Firebase, Apps Script, Wompi, reglas de seguridad) se reparte entre los tres integrantes; el responsable de cada tarea queda registrado en el Issue correspondiente. En equipos de 3 personas cada uno asume más de un rol: el rol dice de qué eres responsable, no qué es lo único que haces.
 
 ## Acuerdos de trabajo
 - **Reunión diaria:** 10 minutos, martes y jueves por Teams. Cada uno responde: qué hice, qué haré, qué me bloquea.
@@ -28,7 +28,7 @@
 |-------------|--------|
 | GitHub (Student Developer Pack) | ☐ todos tienen acceso al repositorio |
 | Google / Firebase | ☐ proyecto creado, todos son editores |
-| Mercado Pago (cuenta de desarrollador) | ☐ credenciales de prueba y usuarios de prueba creados |
+| Wompi (cuenta de comercio, modo pruebas) | ☐ credenciales de prueba y usuarios de prueba creados |
 | Asistente de IA | ☐ cada integrante tiene su cuenta |
 
 _Fecha de conformación: noviembre de 2026._

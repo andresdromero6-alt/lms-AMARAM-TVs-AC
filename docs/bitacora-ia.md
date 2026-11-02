@@ -15,7 +15,7 @@ Formato de cada entrada:
 ## Sprint 0 · Preparar el terreno
 
 ### Sprint 0 · 2026-11-02 · Equipo · Claude (chat con acceso al repositorio)
-**Pedí:** "Hay que desarrollar todo en un GitHub repository", adjuntando la guía paso a paso, la presentación del proyecto y el backlog en Excel. Luego respondí sus preguntas: alcance completo, ruta A (Firestore + Apps Script), pasarela Mercado Pago, y pegué la marca (AMARAM TV, azul oscuro/blanco/aguamarina, Futura), los dos cursos con módulos y lecciones, y los integrantes.
+**Pedí:** "Hay que desarrollar todo en un GitHub repository", adjuntando la guía paso a paso, la presentación del proyecto y el backlog en Excel. Luego respondí sus preguntas: alcance completo, ruta A (Firestore + Apps Script), pasarela de pago (Mercado Pago, luego cambiada a Wompi), y pegué la marca (AMARAM TV, azul oscuro/blanco/aguamarina, Futura), los dos cursos con módulos y lecciones, y los integrantes.
 **Resultado:** la IA leyó los tres documentos, propuso la estructura del repositorio según la guía (`/css /js /img /backend /docs`), escribió `CONTEXTO.md`, el acta del equipo, el inventario de cursos, el modelo de datos de 10 colecciones y exportó el backlog a CSV/Markdown con un script (`scripts/crear-issues.sh`) que crea los 59 Issues con Milestones.
 **Corregí / aprendí:** la IA no puede crear el repositorio en nuestra cuenta: lo creamos nosotros en GitHub y lo conectamos. Antes de construir preguntó cuatro cosas (alcance, ruta, pasarela, datos reales) en lugar de inventar; eso evitó rehacer trabajo.
 
@@ -43,9 +43,9 @@ Formato de cada entrada:
 ## Sprint 4 · Pagos y CRM
 
 ### Sprint 4 · 2026-11-02 · Equipo · Claude
-**Pedí:** Apps Script que cree la preferencia de Mercado Pago leyendo el precio desde Firestore (no desde el navegador), webhook que consulte el pago por ID y solo si está aprobado cree `payments` y `enrollments` por la API REST de Firestore, cambie el lead a `cliente` y envíe correos; CRM con tabla, embudo y notas.
+**Pedí:** Apps Script que construya el enlace de Wompi Checkout Web con firma de integridad leyendo el precio desde Firestore (no desde el navegador), webhook que consulte el pago por ID y solo si está aprobado cree `payments` y `enrollments` por la API REST de Firestore, cambie el lead a `cliente` y envíe correos; CRM con tabla, embudo y notas.
 **Resultado:** `backend/Code.gs` + `appsscript.json` + `README.md` con cuentas de prueba, propiedades del script y tarjetas de prueba; `pago.html` que verifica el pago al volver (respaldo del webhook); `js/admin-crm.js`.
-**Corregí / aprendí:** Apps Script no responde al "preflight" de CORS, así que el frontend envía `text/plain` con JSON dentro. El Access Token **solo** va en Propiedades del script; el `.gitignore` bloquea archivos de secretos. La inscripción usa ID predecible `uid_courseId` para que un aviso repetido no cree dos inscripciones.
+**Corregí / aprendí:** Apps Script no responde al "preflight" de CORS, así que el frontend envía `text/plain` con JSON dentro. Los secretos de Wompi **solo** van en Propiedades del script; el `.gitignore` bloquea archivos de secretos. La inscripción usa ID predecible `uid_courseId` para que un aviso repetido no cree dos inscripciones.
 
 ## Sprint 5 · Recursos y lanzamiento
 

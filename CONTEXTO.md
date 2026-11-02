@@ -18,7 +18,7 @@ Detalle completo (módulos y lecciones) en `docs/cursos.md`.
 - **Frontend:** HTML, CSS y JavaScript puro (sin frameworks, sin bundler). Módulos ES (`<script type="module">`).
 - **Login:** Firebase Authentication (correo/contraseña y Google).
 - **Base de datos:** Cloud Firestore (10 colecciones, ver `docs/modelo-de-datos.md`).
-- **Backend y pagos:** Google Apps Script publicado como aplicación web (`/backend/Code.gs`) + **Mercado Pago Checkout Pro** en modo sandbox.
+- **Backend y pagos:** Google Apps Script publicado como aplicación web (`/backend/Code.gs`) + **Wompi Checkout Web** (Bancolombia) en modo sandbox.
 - **Videos y materiales:** YouTube (no listados) y Google Drive. Nunca Cloud Storage ni Cloud Functions (exigen plan Blaze).
 - **Publicación:** GitHub Pages desde la rama `main`, carpeta `/ (root)`.
 
@@ -54,7 +54,7 @@ Si `js/firebase-config.js` todavía tiene los valores `REEMPLAZAR_...`, la plata
 - Sprint 1: guía de estilo, inicio, catálogo con filtros, detalle con temario, formulario de interés, legales. Modo demo.
 - Sprint 2: login/registro (correo y Google), header con sesión, `firestore.rules`, leads en Firestore.
 - Sprint 3: Mis cursos con progreso, aula con video/material/completar, perfil con certificado, panel admin (cursos, lecciones, inscripciones, usuarios).
-- Sprint 4: Apps Script + Mercado Pago (preferencia, webhook, verificación), `pago.html`, CRM con tabla/embudo/notas, correos.
+- Sprint 4: Apps Script + Wompi (preferencia, webhook, verificación), `pago.html`, CRM con tabla/embudo/notas, correos.
 - Sprint 5: instructores, recursos y costos, calendario, reportes, documentación de pruebas, seguridad y despliegue.
 
 ## Pendiente del equipo (no lo puede hacer la IA)
@@ -73,6 +73,6 @@ Si `js/firebase-config.js` todavía tiene los valores `REEMPLAZAR_...`, la plata
 3. No uses librerías ni frameworks sin preguntar. Firebase se carga desde el CDN oficial (`gstatic.com/firebasejs`).
 4. Entrega archivos completos, no fragmentos.
 5. Diseño responsive, celular primero. Usa las variables CSS de la marca.
-6. Nunca pongas claves secretas en el código: el Access Token de Mercado Pago va solo en Propiedades del script de Apps Script.
+6. Nunca pongas claves secretas en el código: el secretos de Wompi (integridad y eventos) va solo en Propiedades del script de Apps Script.
 7. Nada de testimonios, cifras ni logos inventados. Los textos de ejemplo se marcan como `[EJEMPLO]`.
 8. Usa IDs predecibles en Firestore: inscripción = `${uid}_${courseId}`, progreso = `${uid}_${lessonId}`.

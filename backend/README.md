@@ -1,51 +1,57 @@
-# Backend · Apps Script + Mercado Pago (Sprint 4)
+# Backend · Apps Script + Wompi (Sprint 4)
 
-Este directorio guarda una copia del código que corre en Google Apps Script. **El código vive y se ejecuta en script.google.com**; aquí se versiona para que el repositorio esté completo. Cada vez que cambies algo en el editor de Apps Script, copia el `Code.gs` actualizado aquí y haz commit.
+Este directorio guarda una copia del código que corre en Google Apps Script. **El código vive y se ejecuta en script.google.com** (proyecto `amaram-tv-backend`); aquí se versiona para que el repositorio esté completo. Cada vez que cambies algo en el editor de Apps Script, copia el `Code.gs` actualizado aquí y haz commit.
 
 ## Qué hace
 | Acción | Quién la llama | Qué pasa |
 |---|---|---|
-| `crearPago` | `js/pagos.js` desde el botón Comprar | Lee el precio del curso en Firestore (nunca confía en el navegador), crea la preferencia en Mercado Pago y devuelve el `init_point`. |
-| webhook | Mercado Pago (`?type=payment&data.id=…`) | Consulta el pago por su ID; si está `approved` crea `payments/{id}` y `enrollments/{uid}_{courseId}`, pasa el lead a `cliente` y envía correos. Idempotente. |
-| `verificarPago` | `pago.html` al volver de la pasarela | Respaldo del webhook: procesa el `payment_id` que viene en la URL. |
+| `crearPago` | `js/pagos.js` desde el botón Comprar | Lee el precio del curso en Firestore (nunca confía en el navegador), construye el enlace de **Wompi Checkout Web** con la firma de integridad `SHA256(referencia + centavos + COP + secreto)` y lo devuelve. |
+| webhook | Wompi (evento `transaction.updated`) | Verifica el checksum con el secreto de eventos, consulta la transacción en `/v1/transactions/{id}`; si está `APPROVED` crea `payments/{id}` y `enrollments/{uid}_{courseId}`, pasa el lead a `cliente` y envía correos. Idempotente. |
+| `verificarPago` | `pago.html` al volver de Wompi (`?id=…`) | Respaldo del webhook: procesa la transacción que viene en la URL. |
 | `nuevoLead` | formulario de interés | Correo de bienvenida al contacto y aviso al admin. |
 
-## Paso a paso (30–45 min)
+Referencia de cada transacción: `uid|courseId|timestamp`. Wompi exige referencias únicas; el backend extrae `uid` y `courseId` de ahí.
 
-### A. Mercado Pago
-1. Crea tu cuenta en [mercadopago.com.co](https://www.mercadopago.com.co) y entra a [Tus integraciones](https://www.mercadopago.com.co/developers/panel/app) → **Crear aplicación** → nombre `AMARAM TV` → producto **Pagos en línea → Checkout Pro**.
-2. En la aplicación → **Cuentas de prueba** → crea dos: una **Vendedor** (país Colombia) y una **Comprador** (con saldo, p. ej. 500.000). Anota usuario y contraseña de cada una.
-3. Abre una ventana de incógnito, entra a Mercado Pago con la cuenta **Vendedor**, ve a Tus integraciones → crea otra aplicación `AMARAM TV test` → **Credenciales de producción** de esa cuenta de prueba → copia el **Access Token** (`APP_USR-…` de la cuenta vendedor de prueba). Ese es el token que usarás en pruebas.
-   > Alternativa simple: usar las **Credenciales de prueba** (`TEST-…`) de tu cuenta real. Funcionan para crear preferencias, pero el flujo completo con cuentas de prueba es más fiel.
-4. [Tarjetas de prueba](https://www.mercadopago.com.co/developers/es/docs/checkout-pro/additional-content/your-integrations/test/cards): Mastercard `5254 1336 7440 3564`, Visa `4013 5406 8274 6260`, CVV `123`, vencimiento `11/30`. Nombre del titular define el resultado: `APRO` = aprobado, `OTHE` = rechazado, `CONT` = pendiente. Documento: cualquier número.
+## Paso a paso
 
-### B. Apps Script
-1. Con **la misma cuenta de Google que creó el proyecto de Firebase**, entra a [script.google.com](https://script.google.com) → **Nuevo proyecto** → nómbralo `amaram-tv-backend`.
-2. Pega el contenido de `Code.gs` en el editor (reemplaza todo).
-3. ⚙ **Configuración del proyecto** → marca **Mostrar el archivo de manifiesto "appsscript.json"** → vuelve al editor y reemplaza su contenido con `backend/appsscript.json`.
-4. En la misma Configuración → **Propiedades del script** → agrega:
+### A. Wompi (15 min)
+1. Crea la cuenta de comercio en [comercios.wompi.co](https://comercios.wompi.co) (no necesita cuenta Bancolombia para el **sandbox**; para producción sí piden documentos).
+2. En el panel → **Desarrolladores** encuentras dos juegos de llaves. Para el curso usamos las de **Pruebas (sandbox)**:
+   - Llave pública `pub_test_…`
+   - Llave privada `prv_test_…` (no la usamos; no la pegues en ningún lado)
+   - **Secreto de integridad** `test_integrity_…`
+   - **Secreto de eventos** `test_events_…`
+3. En la misma sección → **URL de eventos** (pruebas): pega la URL `/exec` del script (paso B.6).
+4. Medios de prueba del sandbox:
+   - Tarjeta **aprobada**: `4242 4242 4242 4242`, cualquier CVV y fecha futura, cualquier nombre.
+   - Tarjeta **rechazada**: `4111 1111 1111 1111`.
+   - Nequi aprobado: `3991111111`; Nequi rechazado: `3992222222`.
+   - PSE: en sandbox cualquier banco y documento funcionan; el estado se simula.
+
+### B. Apps Script (ya hecho por el equipo el 2 nov 2026; se repite aquí por si hay que recrearlo)
+1. Con **la misma cuenta de Google que creó el proyecto de Firebase**, entra a [script.google.com](https://script.google.com) → **Nuevo proyecto** → `amaram-tv-backend`.
+2. Pega `Code.gs` (reemplaza todo) y, con "Mostrar appsscript.json" activado en Configuración, pega `appsscript.json`.
+3. Configuración → **Propiedades del script**:
    | Propiedad | Valor |
    |---|---|
-   | `MP_ACCESS_TOKEN` | Access Token (paso A.3). **Nunca** lo pongas en el código ni en GitHub. |
-   | `FIREBASE_PROJECT_ID` | el `projectId` de `js/firebase-config.js` |
+   | `WOMPI_PUBLIC_KEY` | `pub_test_…` |
+   | `WOMPI_INTEGRITY_SECRET` | `test_integrity_…` **(nunca en el código ni en GitHub)** |
+   | `WOMPI_EVENTS_SECRET` | `test_events_…` **(nunca en el código ni en GitHub)** |
+   | `WOMPI_ENV` | `test` (cambiar a `prod` con las llaves de producción al lanzar) |
+   | `FIREBASE_PROJECT_ID` | `amaram-tv-95758` |
    | `SITE_URL` | `https://andresdromero6-alt.github.io/lms-AMARAM-TVs-AC/` |
-   | `ADMIN_EMAIL` | correo del equipo que recibe avisos de ventas (opcional) |
-5. Ejecuta una vez `pruebaConfiguracion` desde el editor (Ejecutar ▶) y **acepta los permisos** (acceso a Firestore, internet y correo). Debe listar los cursos publicados.
-6. **Implementar → Nueva implementación → ⚙ Aplicación web** → Ejecutar como: **Yo** → Quién tiene acceso: **Cualquier usuario** → Implementar. Copia la URL que termina en `/exec`.
-7. Pega esa URL en `js/firebase-config.js` → `APPS_SCRIPT_URL`. Commit: `Conecta el botón Comprar con Apps Script`.
-8. Abre la URL `/exec` en el navegador: debe responder `{"ok":true,"servicio":"AMARAM TV backend", "config": {...todo true}}`.
+   | `ADMIN_EMAIL` | correo que recibe avisos de ventas (opcional) |
+4. Ejecuta `pruebaConfiguracion` (Ejecutar ▶) y acepta los permisos. Debe listar los cursos publicados.
+5. **Implementar → Nueva implementación → Aplicación web** → Ejecutar como **Yo** → Acceso **Cualquier usuario** → copia la URL `/exec`.
+6. Pega la URL en `js/firebase-config.js` → `APPS_SCRIPT_URL` y en Wompi → URL de eventos.
+7. Abre la URL `/exec` en el navegador: debe responder `{"ok":true,"pasarela":"Wompi","config":{…todo true}}`.
 
-### C. Webhook
-1. En Mercado Pago → tu aplicación → **Webhooks** → modo **Pruebas** → URL: la misma `/exec` → eventos: **Pagos** → Guardar.
-   (El script también envía `notification_url` en cada preferencia, así que aunque este paso falle el aviso llega.)
-2. Mercado Pago muestra un botón **Simular** → úsalo para probar que el script responde 200.
-
-### D. Prueba de punta a punta
-1. En la plataforma publicada, entra con una cuenta de estudiante y presiona **Comprar** en un curso.
-2. En el Checkout, inicia sesión con la cuenta **Comprador** de prueba (o paga como invitado con tarjeta de prueba, titular `APRO`).
-3. Al aprobarse, vuelves a `pago.html?estado=exitoso…`; la página verifica el pago y muestra **Ir al aula**.
-4. Comprueba en Firestore: `payments/{id}` con `status: approved`, `enrollments/{uid}_{courseId}` con `status: active`, y el lead en `cliente`.
-5. Repite con titular `OTHE` (rechazado) y `CONT` (pendiente) para ver las otras páginas.
+### C. Prueba de punta a punta
+1. En la plataforma publicada, entra con una cuenta de estudiante y presiona **Comprar**.
+2. En el checkout de Wompi paga con la tarjeta `4242 4242 4242 4242`.
+3. Wompi vuelve a `pago.html?curso=…&id=…`; la página verifica la transacción y muestra **Ir al aula**.
+4. Comprueba en Firestore: `payments/{id}` con `status: APPROVED`, `enrollments/{uid}_{courseId}` con `status: active`, y el lead en `cliente`.
+5. Repite con `4111 1111 1111 1111` para ver la página de rechazo.
 
 ### Cada vez que cambies Code.gs
 **Implementar → Administrar implementaciones → ✎ → Versión: Nueva versión → Implementar.** Si no, la URL sigue usando el código viejo.
@@ -53,12 +59,12 @@ Este directorio guarda una copia del código que corre en Google Apps Script. **
 ## Errores comunes
 | Síntoma | Causa | Solución |
 |---|---|---|
-| `Falta MP_ACCESS_TOKEN` | Propiedad no creada | Configuración → Propiedades del script |
-| `Firestore 403` | La cuenta del script no es dueña/editora del proyecto Firebase, o no aceptaste permisos | Usa la misma cuenta; ejecuta `pruebaConfiguracion` y acepta |
-| `Mercado Pago 401` | Token inválido o de otra cuenta | Copia de nuevo el Access Token |
+| `Faltan WOMPI_PUBLIC_KEY o WOMPI_INTEGRITY_SECRET` | Propiedades no creadas | Configuración → Propiedades del script |
+| Wompi muestra "firma inválida" en el checkout | El secreto de integridad no corresponde a la llave pública (uno es de pruebas y otro de producción) | Usa el par de llaves del mismo ambiente |
+| `Firestore 403` | La cuenta del script no es dueña del proyecto Firebase o no aceptaste permisos | Misma cuenta; ejecuta `pruebaConfiguracion` y acepta |
 | El pago sale aprobado pero el curso no se abre | El webhook no llegó o la implementación es vieja | Revisa **Ejecuciones** en Apps Script; `pago.html` llama a `verificarPago` como respaldo; crea nueva versión |
+| `Firma inválida` en Ejecuciones | `WOMPI_EVENTS_SECRET` incorrecto | Copia de nuevo el secreto de eventos del mismo ambiente |
 | Error de CORS en el navegador | Se envió con `application/json` | `js/pagos.js` ya envía `text/plain`; no lo cambies |
-| `auto_return invalid` | `back_urls.success` no es https | Usa la URL de GitHub Pages, no `localhost` |
 
 ## Plan B si el webhook se complica
-Usa **Admin → Inscripciones → Inscribir manualmente** después de ver el pago aprobado en el panel de Mercado Pago. Sirve para avanzar, pero la automatización completa es parte de la nota.
+Usa **Admin → Inscripciones → Inscribir manualmente** después de ver la transacción aprobada en el panel de Wompi. Sirve para avanzar, pero la automatización completa es parte de la nota.

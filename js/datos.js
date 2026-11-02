@@ -109,7 +109,7 @@ export const LECCIONES = [
 // Preguntas frecuentes de la landing (contenido real del negocio; ajustar si cambia la política)
 export const FAQ = [
   { q: "¿Necesito experiencia previa?", a: "No. El curso de Montaje de Smart TVs empieza desde cero. El paquete de Aires Mini Split es de nivel avanzado: te recomendamos tener nociones básicas de electricidad o tomar primero el curso de Smart TVs." },
-  { q: "¿Cómo accedo a las lecciones después de pagar?", a: "El pago se hace por Mercado Pago. Apenas se aprueba, el curso aparece en «Mis cursos» con tu cuenta y puedes empezar de inmediato desde el celular o el computador." },
+  { q: "¿Cómo accedo a las lecciones después de pagar?", a: "El pago se hace por Wompi (Bancolombia). Apenas se aprueba, el curso aparece en «Mis cursos» con tu cuenta y puedes empezar de inmediato desde el celular o el computador." },
   { q: "¿Las clases son en vivo o grabadas?", a: "Son grabadas: avanzas a tu ritmo, las veces que quieras, y marcas cada lección como completada para llevar tu progreso." },
   { q: "¿Qué herramientas necesito para practicar?", a: "Para Smart TVs: taladro percutor, nivel (ideal láser), detector de vigas y chazos. Para Mini Split: cortatubos, abocardador, manómetros y bomba de vacío. En cada curso encuentras la lista completa." },
   { q: "¿Puedo pedir reembolso?", a: "Sí, dentro de los 5 días siguientes a la compra si no has completado más del 20 % del curso. Revisa la política de reembolso en la sección Legales." }

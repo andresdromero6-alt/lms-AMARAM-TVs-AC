@@ -11,7 +11,7 @@ flowchart TD
     D -- formulario --> CRM
   end
   subgraph Estudiante
-    D -- Comprar --> MP{{Mercado Pago}}
+    D -- Comprar --> MP{{Wompi}}
     MP --> P[pago.html · Exitoso / pendiente / rechazado]
     P --> MC[mis-cursos.html · Mis cursos]
     L --> MC

@@ -145,7 +145,7 @@ function pintarFooter() {
         </ul></div>
       </div>
       <div class="footer__pie">
-        <span>© ${new Date().getFullYear()} AMARAM TV · ${NEGOCIO.ciudad}. Pagos procesados por Mercado Pago${PAGOS_ACTIVOS ? "" : " (en configuración)"}.</span>
+        <span>© ${new Date().getFullYear()} AMARAM TV · ${NEGOCIO.ciudad}. Pagos procesados por Wompi${PAGOS_ACTIVOS ? "" : " (en configuración)"}.</span>
         <span>Proyecto académico · E-Business · <a href="https://github.com/andresdromero6-alt/lms-AMARAM-TVs-AC" target="_blank" rel="noopener">Código en GitHub</a></span>
       </div>
     </div>`;
