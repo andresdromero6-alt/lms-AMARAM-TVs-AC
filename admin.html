@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de administración · AMARAM TV</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    .admin-cabecera { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--esp-3); margin-bottom: var(--esp-4); }
+    .admin-cabecera h2 { margin: 0; }
+    .filtros { display: flex; flex-wrap: wrap; gap: var(--esp-3); margin-bottom: var(--esp-4); }
+    .filtros .campo { min-width: 160px; }
+    .filtros .campo label { font-size: var(--tam-xs); }
+    .filtros input, .filtros select { padding: 0.45rem 0.7rem; }
+    .calendario { display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--esp-2); }
+    .calendario__dia { background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio-sm); padding: var(--esp-2); min-height: 110px; font-size: var(--tam-xs); }
+    .calendario__dia strong { display: block; color: var(--texto-suave); margin-bottom: var(--esp-1); }
+    .calendario__sesion { background: var(--aguamarina-suave); border-left: 3px solid var(--aguamarina); padding: 0.2rem 0.4rem; margin-bottom: 0.25rem; border-radius: 4px; }
+    @media (max-width: 720px) { .calendario { grid-template-columns: 1fr; } .calendario__dia { min-height: auto; } }
+  </style>
+</head>
+<body>
+  <header id="header"></header>
+  <main>
+    <section class="seccion seccion--oscura seccion--compacta">
+      <div class="contenedor">
+        <span class="etiqueta-seccion">Panel de administración</span>
+        <h1 class="mb-0">AMARAM TV · Admin</h1>
+      </div>
+    </section>
+    <section class="seccion seccion--compacta">
+      <div class="contenedor" id="admin" hidden>
+        <div class="pestanas" role="tablist" id="pestanas">
+          <button role="tab" data-tab="reportes" aria-selected="true" type="button">Reportes</button>
+          <button role="tab" data-tab="cursos" aria-selected="false" type="button">Cursos</button>
+          <button role="tab" data-tab="lecciones" aria-selected="false" type="button">Lecciones</button>
+          <button role="tab" data-tab="inscripciones" aria-selected="false" type="button">Inscripciones</button>
+          <button role="tab" data-tab="crm" aria-selected="false" type="button">CRM</button>
+          <button role="tab" data-tab="instructores" aria-selected="false" type="button">Instructores</button>
+          <button role="tab" data-tab="recursos" aria-selected="false" type="button">Recursos y costos</button>
+          <button role="tab" data-tab="calendario" aria-selected="false" type="button">Calendario</button>
+          <button role="tab" data-tab="usuarios" aria-selected="false" type="button">Usuarios</button>
+        </div>
+        <div id="panel" role="tabpanel"><div class="cargando">Cargando…</div></div>
+      </div>
+      <div class="contenedor" id="verificando"><div class="cargando">Verificando permisos…</div></div>
+    </section>
+  </main>
+  <footer id="footer"></footer>
+
+  <dialog class="dialogo" id="dialogo">
+    <form method="dialog" id="dialogo-form">
+      <div class="dialogo__cabecera"><h3 id="dialogo-titulo">Editar</h3><button class="cerrar" type="button" id="dialogo-cerrar" aria-label="Cerrar">×</button></div>
+      <div class="dialogo__cuerpo formulario" id="dialogo-cuerpo"></div>
+      <div class="dialogo__pie"><button class="boton boton--contorno" type="button" id="dialogo-cancelar">Cancelar</button><button class="boton boton--primario" type="submit" id="dialogo-guardar">Guardar</button></div>
+    </form>
+  </dialog>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
