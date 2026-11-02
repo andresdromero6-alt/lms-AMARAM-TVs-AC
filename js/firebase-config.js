@@ -15,12 +15,12 @@
 // =====================================================================
 
 export const firebaseConfig = {
-  apiKey: "REEMPLAZAR_API_KEY",
-  authDomain: "REEMPLAZAR_PROYECTO.firebaseapp.com",
-  projectId: "REEMPLAZAR_PROYECTO",
-  storageBucket: "REEMPLAZAR_PROYECTO.appspot.com",
-  messagingSenderId: "REEMPLAZAR_SENDER_ID",
-  appId: "REEMPLAZAR_APP_ID"
+  apiKey: "AIzaSyAXdLMCkaWtAPLx3BTSrbqXmuHBQ0v5CzY",
+  authDomain: "amaram-tv-95758.firebaseapp.com",
+  projectId: "amaram-tv-95758",
+  storageBucket: "amaram-tv-95758.firebasestorage.app",
+  messagingSenderId: "1094175294943",
+  appId: "1:1094175294943:web:2b46f95af63d66bc36706a"
 };
 
 export const APPS_SCRIPT_URL = "REEMPLAZAR_URL_EXEC_DE_APPS_SCRIPT";
