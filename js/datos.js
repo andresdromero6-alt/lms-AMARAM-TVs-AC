@@ -10,7 +10,7 @@ export const INSTRUCTORES = [
   {
     id: "andres-romero",
     name: "Andrés David Romero Fernández",
-    email: "",
+    email: "andresromerof9@gmail.com",
     specialty: "Montaje de Smart TVs y acabados estéticos",
     bio: "Técnico instalador con experiencia en servicio residencial. Dirige el curso de Montaje Profesional de Smart TVs.",
     hourlyRate: 45000,
@@ -20,7 +20,7 @@ export const INSTRUCTORES = [
   {
     id: "andres-mercado",
     name: "Andrés Camilo Mercado Marín",
-    email: "",
+    email: "andrescamilomercadomarin@gmail.com",
     specialty: "Climatización residencial (Mini Split) y Smart TVs",
     bio: "Técnico en refrigeración y climatización. Dirige el paquete completo de Aires Mini Split + Smart TVs.",
     hourlyRate: 60000,

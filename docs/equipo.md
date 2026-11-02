@@ -8,9 +8,9 @@
 
 | Integrante | Rol Scrum | Responsabilidades | Contacto |
 |------------|-----------|-------------------|----------|
-| Abraham David Martínez Calderón | Líder del proyecto (Scrum Master / Product Owner) | Gestión del tablero ágil, planeación de sprints, coordinación general del equipo y definición del producto. Decide qué va primero y acepta o rechaza lo terminado. | _[completar: correo / Teams]_ |
-| Andrés Camilo Mercado Marín | Mercadeo (Frontend / CRM) | Estrategia de conversión, integración del formulario de clientes (CRM), optimización de la landing page. Dirige a la IA en las pantallas. | _[completar]_ |
-| Andrés Romero | Publicidad (Diseño UX / UI) | Diseño de la experiencia de usuario, wireframes, guía de estilo visual, materiales publicitarios. | _[completar]_ |
+| Abraham David Martínez Calderón | Líder del proyecto (Scrum Master / Product Owner) | Gestión del tablero ágil, planeación de sprints, coordinación general del equipo y definición del producto. Decide qué va primero y acepta o rechaza lo terminado. | abrahamcld512@gmail.com |
+| Andrés Camilo Mercado Marín | Mercadeo (Frontend / CRM) | Estrategia de conversión, integración del formulario de clientes (CRM), optimización de la landing page. Dirige a la IA en las pantallas. | andrescamilomercadomarin@gmail.com |
+| Andrés David Romero Fernández | Publicidad (Diseño UX / UI) | Diseño de la experiencia de usuario, wireframes, guía de estilo visual, materiales publicitarios. Dueño de las cuentas de Firebase, Apps Script y Wompi (andresdromero6@gmail.com). | andresromerof9@gmail.com |
 
 > El rol de **Datos y backend** (Firebase, Apps Script, Wompi, reglas de seguridad) se reparte entre los tres integrantes; el responsable de cada tarea queda registrado en el Issue correspondiente. En equipos de 3 personas cada uno asume más de un rol: el rol dice de qué eres responsable, no qué es lo único que haces.
 
