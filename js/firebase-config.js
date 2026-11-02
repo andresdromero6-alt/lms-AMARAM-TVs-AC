@@ -23,7 +23,7 @@ export const firebaseConfig = {
   appId: "1:1094175294943:web:2b46f95af63d66bc36706a"
 };
 
-export const APPS_SCRIPT_URL = "REEMPLAZAR_URL_EXEC_DE_APPS_SCRIPT";
+export const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyqd1SGe_liB-J61ZdQJGLVgC2AWubrooDQFnkPm0dseWiGvVYWxEs55l0AxYsDx_s-/exec";
 
 // Correo de contacto y WhatsApp del negocio (se muestran en el footer y en la landing)
 export const NEGOCIO = {
