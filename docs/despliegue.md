@@ -27,4 +27,4 @@ No abras los `.html` con doble clic (`file://`): los módulos ES y Firebase nece
 Con **GitHub Desktop** todo esto se hace con botones: Current branch → New branch · Commit · Push · Create Pull Request.
 
 ## Tablero (GitHub Projects)
-Pestaña **Projects → New project → Board** → columnas: `Backlog`, `Por hacer`, `En progreso`, `En revisión`, `Hecho`. Agrega los Issues creados con `scripts/crear-issues.sh` (o a mano) y usa los Milestones `Sprint 0…5` para filtrar.
+Ya existe: https://github.com/users/andresdromero6-alt/projects/1 (vista **Board**, columnas `Backlog`, `Por hacer`, `En progreso`, `En revisión`, `Hecho`). Está vinculado al repositorio: cada Issue nuevo se agrega solo (workflow «Auto-add»). Cada persona mueve sus tarjetas; filtra por Milestone `Sprint 0…5`.

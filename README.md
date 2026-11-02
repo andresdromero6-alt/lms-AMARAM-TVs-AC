@@ -46,7 +46,7 @@ CONTEXTO.md                memoria del proyecto para la IA y el equipo
 2. **Firebase:** crear proyecto, activar Authentication y Firestore, pegar `firebaseConfig`, publicar `firestore.rules`, cargar el inventario desde Admin ([docs/firebase.md](docs/firebase.md)).
 3. **Pagos:** crear el script en Apps Script, poner el los secretos de Wompi (integridad y eventos) en Propiedades del script, publicar como aplicación web y pegar la URL `/exec` ([backend/README.md](backend/README.md)).
 4. **Contenido:** subir videos y materiales y pegar los enlaces en Admin → Lecciones.
-5. **Tablero:** `bash scripts/crear-issues.sh` y crear el Board en Projects.
+5. **Tablero:** ya creado en [GitHub Projects](https://github.com/users/andresdromero6-alt/projects/1); los 59 Issues del backlog existen con Milestones por sprint.
 
 Para probar en el computador: `python3 -m http.server 8000` y abre `http://localhost:8000` (no uses doble clic sobre los `.html`).
 
