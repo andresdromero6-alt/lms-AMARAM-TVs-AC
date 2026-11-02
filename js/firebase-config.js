@@ -28,8 +28,8 @@ export const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyqd1SGe
 // Correo de contacto y WhatsApp del negocio (se muestran en el footer y en la landing)
 export const NEGOCIO = {
   nombre: "AMARAM TV",
-  correo: "contacto@amaramtv.co",      // [EJEMPLO] reemplazar por el correo real
-  whatsapp: "573000000000",            // [EJEMPLO] número con indicativo, sin + ni espacios
+  correo: "andresdromero6@gmail.com",
+  whatsapp: "573115537611",            // indicativo 57 + número, sin + ni espacios
   ciudad: "Colombia"
 };
 
