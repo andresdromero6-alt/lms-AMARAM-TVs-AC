@@ -2,8 +2,8 @@
 // AMARAM TV · Datos de ejemplo (modo demo)
 // Fuente: docs/cursos.md. Se usan cuando Firebase aún no está configurado
 // (Sprint 1) y como semilla para cargar Firestore (ver scripts/cargar-cursos.md).
-// Los videos y materiales marcados como [EJEMPLO] deben reemplazarse por
-// los enlaces reales (YouTube no listado / Google Drive) en el Sprint 3.
+// Videos: un video por curso (YouTube), asignado a todas sus lecciones; la lección 4.2 del
+// paquete Mini Split usa el video de Smart TVs. Los materiales [EJEMPLO] siguen pendientes.
 // =====================================================================
 
 export const INSTRUCTORES = [
@@ -70,6 +70,7 @@ export const CURSOS = [
   }
 ];
 
+const VIDEO = { "montaje-smart-tv": "https://www.youtube.com/watch?v=FvtQMnGidNA", "mini-split-smart-tv": "https://www.youtube.com/watch?v=Aqq_7399c0M" };
 const L = (courseId, m, l, moduleName, title, durationMin = 25) => ({
   id: `${courseId}_m${m}-l${l}`,
   courseId,
@@ -77,7 +78,7 @@ const L = (courseId, m, l, moduleName, title, durationMin = 25) => ({
   moduleName,
   order: m * 10 + l,
   title,
-  videoUrl: "",            // [EJEMPLO] pegar enlace de YouTube no listado
+  videoUrl: (courseId === "mini-split-smart-tv" && m === 4 && l === 2) ? VIDEO["montaje-smart-tv"] : VIDEO[courseId],
   content: `En esta lección verás: ${title} Toma apuntes y, al terminar, marca la lección como completada para registrar tu avance.`,
   materialUrl: "",         // [EJEMPLO] pegar enlace de Google Drive
   materialName: "",

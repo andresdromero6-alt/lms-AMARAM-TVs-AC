@@ -73,6 +73,6 @@ Dos cursos prediseñados. Este inventario es la fuente para `js/datos.js` (modo 
 ---
 
 ## Pendientes de contenido (Sprint 3)
-- [ ] Grabar o enlazar un video (YouTube **no listado**) por lección → campo `videoUrl`.
+- [x] Video por curso cargado en las 16 lecciones (2 nov 2026): Smart TVs `youtu.be/FvtQMnGidNA`, Mini Split `youtu.be/Aqq_7399c0M`. Pendiente: un video propio por lección cuando el equipo los grabe.
 - [ ] Subir materiales a Google Drive con enlace "cualquiera con el enlace puede ver" → campo `materialUrl`.
 - [ ] Imagen de portada por curso en `/img/` (sin espacios ni tildes: `curso-smart-tv.jpg`, `curso-mini-split.jpg`).
