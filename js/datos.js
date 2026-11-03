@@ -71,7 +71,7 @@ export const CURSOS = [
 
 // Videos por módulo. Los MP4 viven en /video/ (servidos por GitHub Pages); también se aceptan enlaces de YouTube.
 const VIDEO = {
-  "montaje-smart-tv": { 1: "video/montaje-smart-tv-m1.mp4" },
+  "montaje-smart-tv": { 1: "video/montaje-smart-tv-m1.mp4", 2: "video/montaje-smart-tv-m2.mp4" },
   "mini-split-smart-tv": { 1: "https://www.youtube.com/watch?v=Aqq_7399c0M", 2: "https://www.youtube.com/watch?v=Aqq_7399c0M", 3: "https://www.youtube.com/watch?v=Aqq_7399c0M", 4: "https://www.youtube.com/watch?v=Aqq_7399c0M" }
 };
 const L = (courseId, m, l, moduleName, title, durationMin = 25) => ({
