@@ -51,8 +51,12 @@ if (usuario) {
       if (leccion) {
         $("#modulo").textContent = `Módulo ${leccion.moduleNumber} · ${leccion.moduleName}`;
         $("#titulo-leccion").textContent = leccion.title;
-        const embed = youtubeEmbed(leccion.videoUrl);
-        $("#video").innerHTML = embed
+        const url = leccion.videoUrl || "";
+        const esArchivo = /\.(mp4|webm|m4v)(\?|$)/i.test(url);
+        const embed = esArchivo ? "" : youtubeEmbed(url);
+        $("#video").innerHTML = esArchivo
+          ? `<video controls playsinline preload="metadata" style="width:100%;height:100%;background:#000" title="${escapar(leccion.title)}"><source src="${escapar(url)}" type="video/${url.toLowerCase().includes(".webm") ? "webm" : "mp4"}">Tu navegador no reproduce este video.</video>`
+          : embed
           ? `<iframe src="${escapar(embed)}" title="${escapar(leccion.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
           : `<div class="video__vacio"><div><strong>Video en preparación</strong><br><span class="texto-sm">El instructor aún no publica el video de esta lección.</span></div></div>`;
         $("#contenido").innerHTML = (leccion.content || "").split(/\n{2,}/).map(p => `<p>${escapar(p).replace(/\n/g, "<br>")}</p>`).join("") || "<p>Sin notas para esta lección.</p>";

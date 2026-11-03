@@ -116,7 +116,7 @@ export async function pintarLecciones() {
     { name: "moduleName", label: "Nombre del módulo", required: true },
     { name: "order", label: "Orden (ej. 11, 12, 21…)", type: "number", min: 1, required: true, ayuda: "Convención: módulo × 10 + lección." },
     { name: "title", label: "Título de la lección", required: true },
-    { name: "videoUrl", label: "URL del video (YouTube no listado)", type: "url", placeholder: "https://youtu.be/…" },
+    { name: "videoUrl", label: "Video: enlace de YouTube (no listado) o ruta de un MP4 del repositorio", placeholder: "https://youtu.be/… o video/nombre.mp4", ayuda: "Los MP4 van en la carpeta /video del repositorio (sin espacios ni tildes en el nombre)." },
     { name: "content", label: "Texto / notas de la lección", type: "textarea", rows: 5 },
     { name: "materialUrl", label: "URL del material (Google Drive)", type: "url" },
     { name: "materialName", label: "Nombre del material", placeholder: "Lista de herramientas (PDF)" },
