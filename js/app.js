@@ -7,8 +7,10 @@
 
 import { auth, fa, MODO_DEMO, crearPerfilSiNoExiste, obtenerPerfil } from "./db.js";
 import { NEGOCIO, PAGOS_ACTIVOS } from "./firebase-config.js";
+import { icono } from "./iconos.js";
+import "./animaciones.js";
 
-export const LOGO_SVG = `<svg class="logo__marca" viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="6" width="36" height="24" rx="4" fill="#2EC4B6"/><rect x="6" y="10" width="28" height="16" rx="2" fill="#0B1F3A"/><path d="M14 34h12M20 30v4" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round"/><path d="M11 18c2-4 6-4 9 0s7 4 9 0" stroke="#7EE8DC" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>`;
+export const LOGO_SVG = `<svg class="logo__marca" viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="5" width="36" height="25" rx="5" fill="#2EC4B6"/><rect x="5.5" y="8.5" width="29" height="18" rx="2.5" fill="#0A1A33"/><path d="M13 34h14M20 30v4" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round"/><path d="M10 20.5c3-6 6.5-6 10 0s7 6 10 0" stroke="#8FF0E4" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="29" cy="12.5" r="1.6" fill="#C8793A"/></svg>`;
 
 // --------------------------------------------------------------------
 // Utilidades
@@ -93,7 +95,7 @@ function pintarHeader() {
     <div class="contenedor header__barra">
       <a class="logo" href="index.html" aria-label="AMARAM TV, inicio">${LOGO_SVG}<span class="logo__texto">AMARAM <span>TV</span></span></a>
       <button class="boton-menu" id="boton-menu" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        ${icono("menu", "icono icono--lg")}
       </button>
       <nav class="nav" id="nav" aria-label="Principal">
         <a href="index.html" ${pagina === "index.html" ? 'aria-current="page"' : ""}>Inicio</a>
@@ -118,7 +120,7 @@ function pintarSesion() {
   zona.innerHTML = `
     <a href="mis-cursos.html" ${pagina === "mis-cursos.html" || pagina === "leccion.html" ? 'aria-current="page"' : ""}>Mis cursos</a>
     ${esAdmin() ? `<a href="admin.html" ${pagina === "admin.html" ? 'aria-current="page"' : ""}>Admin</a>` : ""}
-    <a href="perfil.html" class="nav__usuario" title="Mi perfil">Hola, ${nombre}</a>
+    <a href="perfil.html" class="nav__usuario" title="Mi perfil">${icono("usuarios")} ${nombre}</a>
     <button class="boton boton--contorno boton--sm" id="boton-salir" type="button">Salir</button>`;
   $("#boton-salir").addEventListener("click", cerrarSesion);
 }
@@ -134,18 +136,18 @@ function pintarFooter() {
           <a class="logo" href="index.html">${LOGO_SVG}<span class="logo__texto">AMARAM <span>TV</span></span></a>
           <p class="mt-3">Cursos en línea de instalación de aires acondicionados Mini Split y montaje profesional de Smart TVs. Aprende un oficio rentable, a tu ritmo y desde el celular.</p>
         </div>
-        <div><h4>Cursos</h4><ul><li><a href="cursos.html">Catálogo</a></li><li><a href="curso.html?id=montaje-smart-tv">Montaje de Smart TVs</a></li><li><a href="curso.html?id=mini-split-smart-tv">Aires Mini Split + Smart TVs</a></li></ul></div>
-        <div><h4>Cuenta</h4><ul><li><a href="login.html">Entrar o registrarme</a></li><li><a href="mis-cursos.html">Mis cursos</a></li><li><a href="perfil.html">Mi perfil</a></li></ul></div>
+        <div><h4>Cursos</h4><ul><li>${icono("libro")}<a href="cursos.html">Catálogo</a></li><li>${icono("soporte")}<a href="curso.html?id=montaje-smart-tv">Montaje de Smart TVs</a></li><li>${icono("copo")}<a href="curso.html?id=mini-split-smart-tv">Aires Mini Split + Smart TVs</a></li></ul></div>
+        <div><h4>Cuenta</h4><ul><li>${icono("candado")}<a href="login.html">Entrar o registrarme</a></li><li>${icono("play")}<a href="mis-cursos.html">Mis cursos</a></li><li>${icono("usuarios")}<a href="perfil.html">Mi perfil</a></li></ul></div>
         <div><h4>Contacto</h4><ul>
-          <li><a href="mailto:${NEGOCIO.correo}">${NEGOCIO.correo}</a></li>
-          <li><a href="https://wa.me/${NEGOCIO.whatsapp}" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a href="legales.html">Política de datos</a></li>
-          <li><a href="legales.html#terminos">Términos y condiciones</a></li>
-          <li><a href="legales.html#reembolso">Política de reembolso</a></li>
+          <li>${icono("correo")}<a href="mailto:${NEGOCIO.correo}">${NEGOCIO.correo}</a></li>
+          <li>${icono("whatsapp")}<a href="https://wa.me/${NEGOCIO.whatsapp}" target="_blank" rel="noopener">WhatsApp ${NEGOCIO.whatsapp.replace(/^57/, "")}</a></li>
+          <li>${icono("escudo")}<a href="legales.html">Política de datos</a></li>
+          <li>${icono("libro")}<a href="legales.html#terminos">Términos y condiciones</a></li>
+          <li>${icono("tarjeta")}<a href="legales.html#reembolso">Política de reembolso</a></li>
         </ul></div>
       </div>
       <div class="footer__pie">
-        <span>© ${new Date().getFullYear()} AMARAM TV · ${NEGOCIO.ciudad}. Pagos procesados por Wompi${PAGOS_ACTIVOS ? "" : " (en configuración)"}.</span>
+        <span>© ${new Date().getFullYear()} AMARAM TV, ${NEGOCIO.ciudad}. Pagos seguros con Wompi${PAGOS_ACTIVOS ? "" : " (en configuración)"}.</span>
         <span>Proyecto académico · E-Business · <a href="https://github.com/andresdromero6-alt/lms-AMARAM-TVs-AC" target="_blank" rel="noopener">Código en GitHub</a></span>
       </div>
     </div>`;

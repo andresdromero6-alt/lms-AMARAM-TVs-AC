@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AMARAM TV · Cursos de instalación de aires Mini Split y Smart TVs</title>
   <meta name="description" content="Aprende a instalar aires acondicionados Mini Split y a montar Smart TVs como un profesional. Cursos en línea, a tu ritmo, con certificación. AMARAM TV, Colombia.">
-  <meta name="theme-color" content="#0B1F3A">
+  <meta name="theme-color" content="#0A1A33">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
@@ -17,21 +19,24 @@
     <section class="hero">
       <div class="contenedor hero__grid">
         <div>
-          <span class="etiqueta-seccion">Cursos técnicos en línea · Colombia</span>
-          <h1>Aprende un oficio que <em>paga</em>: instala aires Mini Split y Smart TVs</h1>
-          <p>Cursos prácticos grabados por técnicos que trabajan en el oficio. Avanza desde el celular, a tu ritmo, y empieza a cobrar por tus propias instalaciones.</p>
-          <div class="hero__acciones">
-            <a class="boton boton--primario boton--grande" href="cursos.html">Ver los cursos</a>
+          <span class="etiqueta-seccion" data-entrada style="--i:0">Cursos técnicos en línea, Colombia</span>
+          <h1 data-entrada style="--i:1">Aprende el oficio que todo hogar necesita</h1>
+          <p data-entrada style="--i:2">Instala aires Mini Split y monta Smart TVs con la técnica de quienes viven de esto. Lecciones en video, a tu ritmo, desde el celular. Y lo más importante: cómo cobrar por tu trabajo.</p>
+          <div class="hero__acciones" data-entrada style="--i:3">
+            <a class="boton boton--primario boton--grande" href="cursos.html"><i data-icono="play" class="icono"></i> Ver los cursos</a>
             <a class="boton boton--contorno boton--grande" href="#contacto">Quiero más información</a>
           </div>
+          <div class="hero__ficha" data-entrada style="--i:4">
+            <div><strong>2 cursos</strong><span>Smart TVs y Mini Split</span></div>
+            <div><strong>16 lecciones</strong><span>en video, paso a paso</span></div>
+            <div><strong>Pago único</strong><span>acceso inmediato con Wompi</span></div>
+          </div>
         </div>
-        <aside class="hero__visual" aria-label="Qué incluye">
-          <ul>
-            <li><span><strong>Acceso inmediato</strong> al aula después del pago por Wompi.</span></li>
-            <li><span><strong>Lecciones en video</strong> paso a paso, con materiales descargables.</span></li>
-            <li><span><strong>Certificación</strong> al completar el 100 % de las lecciones.</span></li>
-            <li><span><strong>Desde $90.000 COP</strong>, pago único, sin mensualidades.</span></li>
-          </ul>
+        <aside class="hero__visual" data-entrada style="--i:2" aria-label="Técnico instalando un aire acondicionado">
+          <div class="hero__foto"><img src="https://images.unsplash.com/photo-1792799888905-8696bd32a11a?auto=format&fit=crop&w=900&q=80" alt="Técnico instalando la unidad interior de un aire acondicionado Mini Split" width="900" height="1125" fetchpriority="high"></div>
+          <div class="hero__chip hero__chip--1"><span class="icono-caja"><i data-icono="nivel" class="icono"></i></span><div><strong>Nivelación láser</strong>Módulo 3 · Smart TVs</div></div>
+          <div class="hero__chip hero__chip--2"><span class="icono-caja"><i data-icono="manometro" class="icono"></i></span><div><strong>Vacío y hermeticidad</strong>Módulo 3 · Mini Split</div></div>
+          <div class="hero__chip hero__chip--3"><span class="icono-caja"><i data-icono="certificado" class="icono"></i></span><div><strong>Certificado</strong>al completar el 100 %</div></div>
         </aside>
       </div>
     </section>
@@ -39,13 +44,15 @@
     <!-- BENEFICIOS -->
     <section class="seccion">
       <div class="contenedor">
-        <span class="etiqueta-seccion">Por qué AMARAM TV</span>
-        <h2>Un oficio con demanda, enseñado por quienes lo hacen</h2>
-        <p class="subtitulo mb-5">Cada hogar nuevo necesita un técnico que instale su aire y su televisor. Te enseñamos a hacerlo bien y a cobrarlo bien.</p>
+        <div class="revelar">
+          <span class="etiqueta-seccion">Por qué AMARAM TV</span>
+          <h2>Un oficio con demanda, enseñado por quienes lo hacen</h2>
+          <p class="subtitulo mb-5">Cada casa nueva necesita a alguien que instale su aire y su televisor. Te enseñamos a hacerlo bien y a cobrarlo bien.</p>
+        </div>
         <div class="rejilla rejilla--3">
-          <article class="tarjeta tarjeta--icono"><div class="icono">🛠️</div><h3>100 % práctico</h3><p class="mb-0">Herramientas reales, muros reales, errores reales. Sin teoría de relleno: lo que necesitas para la primera instalación.</p></article>
-          <article class="tarjeta tarjeta--icono"><div class="icono">📱</div><h3>Desde el celular</h3><p class="mb-0">Las lecciones se ven en cualquier dispositivo. Marca tu avance y retoma donde quedaste.</p></article>
-          <article class="tarjeta tarjeta--icono"><div class="icono">💼</div><h3>Monta tu servicio técnico</h3><p class="mb-0">Incluye cómo cotizar, entregar al cliente y cobrar. El objetivo es que generes ingresos, no solo que aprendas.</p></article>
+          <article class="tarjeta tarjeta--icono revelar" style="--i:0"><div class="icono-caja"><i data-icono="taladro" class="icono icono--lg"></i></div><h3>Cien por ciento práctico</h3><p class="mb-0">Herramientas reales, muros reales, errores reales. Sin teoría de relleno: lo que necesitas para la primera instalación.</p></article>
+          <article class="tarjeta tarjeta--icono revelar" style="--i:1"><div class="icono-caja"><i data-icono="movil" class="icono icono--lg"></i></div><h3>Desde el celular</h3><p class="mb-0">Las lecciones se ven en cualquier dispositivo. Marca tu avance y retoma donde quedaste.</p></article>
+          <article class="tarjeta tarjeta--icono revelar" style="--i:2"><div class="icono-caja icono-caja--cobre"><i data-icono="grafica" class="icono icono--lg"></i></div><h3>Monta tu servicio técnico</h3><p class="mb-0">Incluye cómo cotizar, entregar al cliente y cobrar. El objetivo es que generes ingresos, no solo que aprendas.</p></article>
         </div>
       </div>
     </section>
@@ -53,9 +60,9 @@
     <!-- CURSOS DESTACADOS -->
     <section class="seccion seccion--clara" id="cursos">
       <div class="contenedor">
-        <div class="fila fila--entre mb-5">
+        <div class="fila fila--entre mb-5 revelar">
           <div><span class="etiqueta-seccion">Catálogo</span><h2 class="mb-0">Nuestros cursos</h2></div>
-          <a class="boton boton--contorno" href="cursos.html">Ver todo el catálogo</a>
+          <a class="boton boton--contorno" href="cursos.html">Ver todo el catálogo <i data-icono="flecha" class="icono"></i></a>
         </div>
         <div class="rejilla rejilla--2" id="cursos-destacados"><div class="cargando">Cargando cursos…</div></div>
       </div>
@@ -64,51 +71,79 @@
     <!-- CÓMO FUNCIONA -->
     <section class="seccion seccion--oscura">
       <div class="contenedor">
-        <span class="etiqueta-seccion">Cómo funciona</span>
-        <h2>De interesado a técnico en cuatro pasos</h2>
-        <div class="rejilla rejilla--4 mt-5">
-          <div><span class="insignia">1</span><h3 class="mt-3">Elige tu curso</h3><p class="mb-0">Mira el temario, el instructor y el precio en el catálogo.</p></div>
-          <div><span class="insignia">2</span><h3 class="mt-3">Crea tu cuenta y paga</h3><p class="mb-0">Pago seguro con Wompi: tarjeta, PSE, Nequi o Bancolombia.</p></div>
-          <div><span class="insignia">3</span><h3 class="mt-3">Entra al aula</h3><p class="mb-0">El curso se activa solo al aprobarse el pago. Sin esperas.</p></div>
-          <div><span class="insignia">4</span><h3 class="mt-3">Completa y certifícate</h3><p class="mb-0">Marca cada lección y descarga tu certificado al terminar.</p></div>
+        <div class="revelar">
+          <span class="etiqueta-seccion">Cómo funciona</span>
+          <h2>De interesado a técnico en cuatro pasos</h2>
+        </div>
+        <div class="pasos-linea mt-5">
+          <div class="paso revelar" style="--i:0"><div class="icono-caja"><i data-icono="libro" class="icono icono--lg"></i></div><div class="paso__numero"></div><h3>Elige tu curso</h3><p>Mira el temario, el instructor y el precio en el catálogo.</p></div>
+          <div class="paso revelar" style="--i:1"><div class="icono-caja"><i data-icono="tarjeta" class="icono icono--lg"></i></div><div class="paso__numero"></div><h3>Crea tu cuenta y paga</h3><p>Pago seguro con Wompi: tarjeta, PSE, Nequi o Bancolombia.</p></div>
+          <div class="paso revelar" style="--i:2"><div class="icono-caja"><i data-icono="play" class="icono icono--lg"></i></div><div class="paso__numero"></div><h3>Entra al aula</h3><p>El curso se activa solo al aprobarse el pago. Sin esperas.</p></div>
+          <div class="paso revelar" style="--i:3"><div class="icono-caja"><i data-icono="certificado" class="icono icono--lg"></i></div><div class="paso__numero"></div><h3>Completa y certifícate</h3><p>Marca cada lección y descarga tu certificado al terminar.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LO QUE APRENDES -->
+    <section class="seccion">
+      <div class="contenedor dual">
+        <div class="foto-marco revelar">
+          <img src="https://images.unsplash.com/photo-1676630656246-3047520adfdf?auto=format&fit=crop&w=1000&q=80" alt="Técnico fijando un soporte de pared con destornillador" loading="lazy" width="1000" height="750">
+          <div class="foto-marco__pie"><i data-icono="soporte" class="icono"></i> Soportes, anclajes y acabados sin cables a la vista</div>
+        </div>
+        <div class="revelar" style="--i:1">
+          <span class="etiqueta-seccion">Lo que aprendes</span>
+          <h2>Técnica de taller, explicada para empezar desde cero</h2>
+          <p class="subtitulo">Cada módulo resuelve un problema concreto del trabajo real: el muro equivocado, la pantalla torcida, la fuga de gas que nadie detectó.</p>
+          <ul class="lista-limpia lista-check">
+            <li>Identificar el muro (concreto, ladrillo hueco, drywall) y elegir el anclaje correcto.</li>
+            <li>Nivelar con láser, perforar limpio y montar pantallas de cualquier tamaño.</li>
+            <li>Cortar, abocardar y aislar tubería de cobre para Mini Split.</li>
+            <li>Hacer vacío con bomba, probar hermeticidad y poner en marcha el equipo.</li>
+            <li>Cotizar, entregar al cliente y cobrar por el servicio.</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- QUIÉNES SOMOS -->
-    <section class="seccion" id="nosotros">
+    <section class="seccion seccion--clara" id="nosotros">
       <div class="contenedor">
-        <span class="etiqueta-seccion">Quiénes somos</span>
-        <h2>El equipo detrás de AMARAM TV</h2>
-        <p class="subtitulo mb-5">Somos un emprendimiento colombiano de formación técnica. Diseñamos cursos cortos para que personas sin experiencia previa dominen un oficio del hogar con alta demanda.</p>
+        <div class="revelar">
+          <span class="etiqueta-seccion">Quiénes somos</span>
+          <h2>El equipo detrás de AMARAM TV</h2>
+          <p class="subtitulo mb-5">Somos un emprendimiento colombiano de formación técnica. Diseñamos cursos cortos para que personas sin experiencia previa dominen un oficio del hogar con alta demanda.</p>
+        </div>
         <div class="rejilla rejilla--3">
-          <article class="tarjeta"><h3>Andrés David Romero Fernández</h3><p class="texto-suave texto-sm">Instructor · Montaje de Smart TVs</p><p class="mb-0">Diseño de la experiencia del estudiante y responsable del curso de montaje profesional de pantallas.</p></article>
-          <article class="tarjeta"><h3>Andrés Camilo Mercado Marín</h3><p class="texto-suave texto-sm">Instructor · Climatización residencial</p><p class="mb-0">Responsable del paquete completo de Aires Mini Split + Smart TVs y de la atención a interesados.</p></article>
-          <article class="tarjeta"><h3>Abraham David Martínez Calderón</h3><p class="texto-suave texto-sm">Dirección del proyecto</p><p class="mb-0">Coordina el equipo, el producto y la operación de la plataforma.</p></article>
+          <article class="tarjeta persona revelar" style="--i:0"><div class="persona__inicial">AR</div><div><h3 class="mb-0">Andrés David Romero Fernández</h3><p class="texto-suave texto-sm">Instructor · Montaje de Smart TVs</p><p class="mb-0 texto-sm">Diseño de la experiencia del estudiante y responsable del curso de montaje profesional de pantallas.</p></div></article>
+          <article class="tarjeta persona revelar" style="--i:1"><div class="persona__inicial">AM</div><div><h3 class="mb-0">Andrés Camilo Mercado Marín</h3><p class="texto-suave texto-sm">Instructor · Climatización residencial</p><p class="mb-0 texto-sm">Responsable del paquete completo de Aires Mini Split + Smart TVs y de la atención a interesados.</p></div></article>
+          <article class="tarjeta persona revelar" style="--i:2"><div class="persona__inicial">AB</div><div><h3 class="mb-0">Abraham David Martínez Calderón</h3><p class="texto-suave texto-sm">Dirección del proyecto</p><p class="mb-0 texto-sm">Coordina el equipo, el producto y la operación de la plataforma.</p></div></article>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="seccion seccion--clara" id="faq">
+    <section class="seccion" id="faq">
       <div class="contenedor">
-        <span class="etiqueta-seccion">Preguntas frecuentes</span>
-        <h2>Lo que nos preguntan antes de comprar</h2>
-        <div class="acordeon mt-5" id="faq-lista"></div>
+        <div class="revelar">
+          <span class="etiqueta-seccion">Preguntas frecuentes</span>
+          <h2>Lo que nos preguntan antes de comprar</h2>
+        </div>
+        <div class="acordeon mt-5 revelar" id="faq-lista"></div>
       </div>
     </section>
 
     <!-- CONTACTO / FORMULARIO CRM -->
-    <section class="seccion" id="contacto">
+    <section class="seccion seccion--oscura" id="contacto">
       <div class="contenedor">
         <div class="rejilla rejilla--2">
-          <div>
+          <div class="revelar">
             <span class="etiqueta-seccion">Contacto</span>
             <h2>¿Tienes dudas? Te escribimos</h2>
             <p class="subtitulo">Déjanos tus datos y un instructor te contacta por WhatsApp o correo para resolver tus preguntas antes de inscribirte.</p>
-            <p class="texto-sm texto-suave">También puedes escribirnos directo por <a id="enlace-whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>.</p>
+            <p class="mb-0"><a class="boton boton--contorno" id="enlace-whatsapp" href="#" target="_blank" rel="noopener"><i data-icono="whatsapp" class="icono"></i> Escribir por WhatsApp</a></p>
           </div>
-          <form class="tarjeta formulario" id="form-interes" novalidate>
+          <form class="formulario formulario--oscuro revelar" id="form-interes" novalidate style="--i:1">
             <div class="campo">
               <label for="nombre">Nombre completo *</label>
               <input id="nombre" name="name" type="text" autocomplete="name" required minlength="3" placeholder="Tu nombre">

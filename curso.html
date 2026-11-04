@@ -10,16 +10,19 @@
     .detalle { display: grid; gap: var(--esp-5); }
     .detalle__compra { position: sticky; top: 84px; }
     @media (min-width: 900px) { .detalle { grid-template-columns: 1fr 340px; align-items: start; } }
-    .detalle__portada { aspect-ratio: 16/9; border-radius: var(--radio); overflow: hidden; background: linear-gradient(135deg, var(--azul-medio), var(--azul-oscuro)); }
+    .detalle__portada { aspect-ratio: 16/9; border-radius: var(--radio-lg); overflow: hidden; background: linear-gradient(135deg, var(--azul-medio), var(--azul-oscuro)); box-shadow: var(--sombra-fuerte); }
+    .detalle h2 { display: flex; align-items: center; gap: .6rem; }
+    .detalle h2 .icono { color: var(--aguamarina-oscuro); }
     .detalle__portada img { width: 100%; height: 100%; object-fit: cover; }
   </style>
 </head>
 <body>
   <header id="header"></header>
   <main>
-    <section class="seccion seccion--oscura seccion--compacta">
+    <section class="portada">
+      <div class="portada__foto" aria-hidden="true" id="portada-fondo"></div>
       <div class="contenedor">
-        <p class="migas"><a href="index.html" style="color:#9fb3cf">Inicio</a> › <a href="cursos.html" style="color:#9fb3cf">Cursos</a> › <span id="miga-curso">Curso</span></p>
+        <p class="migas"><a href="index.html">Inicio</a> › <a href="cursos.html">Cursos</a> › <span id="miga-curso">Curso</span></p>
         <span class="etiqueta-seccion" id="categoria"></span>
         <h1 id="titulo">Cargando…</h1>
         <p class="subtitulo mb-0" id="promesa"></p>
@@ -30,15 +33,15 @@
       <div class="contenedor detalle" id="detalle" hidden>
         <div>
           <div class="detalle__portada mb-5" id="portada"></div>
-          <h2>Qué vas a lograr</h2>
+          <h2><i data-icono="rayo" class="icono"></i>Qué vas a lograr</h2>
           <p id="descripcion"></p>
-          <h2 class="mt-5">Para quién es</h2>
+          <h2 class="mt-5"><i data-icono="usuarios" class="icono"></i>Para quién es</h2>
           <p id="publico"></p>
-          <h2 class="mt-5">Temario</h2>
+          <h2 class="mt-5"><i data-icono="libro" class="icono"></i>Temario</h2>
           <div class="acordeon" id="temario"><div class="cargando">Cargando temario…</div></div>
-          <h2 class="mt-5">Requisitos</h2>
+          <h2 class="mt-5"><i data-icono="taladro" class="icono"></i>Requisitos</h2>
           <ul class="lista-limpia lista-check" id="requisitos"></ul>
-          <h2 class="mt-5">Instructor</h2>
+          <h2 class="mt-5"><i data-icono="certificado" class="icono"></i>Instructor</h2>
           <div class="tarjeta" id="instructor"></div>
         </div>
 
@@ -47,7 +50,7 @@
           <p class="precio mb-0" style="font-size: var(--tam-xl)" id="precio"></p>
           <p class="texto-sm texto-suave">Pago único · acceso de por vida</p>
           <div id="zona-compra"><button class="boton boton--primario boton--bloque boton--grande" id="boton-comprar" type="button">Comprar el curso</button></div>
-          <p class="texto-xs texto-tenue mt-3" id="nota-pago">Pagas con Wompi (tarjeta, PSE, Nequi o Bancolombia). El aula se activa automáticamente al aprobarse el pago.</p>
+          <p class="texto-xs texto-tenue mt-3" id="nota-pago"><i data-icono="escudo" class="icono"></i> Pagas con Wompi (tarjeta, PSE, Nequi o Bancolombia). El aula se activa automáticamente al aprobarse el pago.</p>
           <hr class="separador">
           <ul class="lista-limpia lista-check texto-sm">
             <li id="dato-duracion"></li>
@@ -73,7 +76,7 @@
             <h2>Pregúntale al instructor</h2>
             <p class="subtitulo">Déjanos tus datos y te contactamos para resolver tus dudas sobre este curso.</p>
           </div>
-          <form class="tarjeta formulario" id="form-interes" novalidate>
+          <form class="tarjeta formulario revelar" id="form-interes" novalidate>
             <div class="campo"><label for="nombre">Nombre completo *</label><input id="nombre" name="name" type="text" required minlength="3"><span class="error" data-error-para="nombre"></span></div>
             <div class="campo--fila">
               <div class="campo"><label for="correo">Correo *</label><input id="correo" name="email" type="email" required><span class="error" data-error-para="correo"></span></div>

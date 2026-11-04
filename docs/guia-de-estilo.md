@@ -53,3 +53,13 @@ Celular primero. Puntos de quiebre: 640 px (rejillas de 2), 860 px (menú horizo
 
 ## Imágenes
 Nombres sin espacios, tildes ni mayúsculas (`curso-smart-tv.svg`). Portadas 16:9. Fotos reales del equipo y de instalaciones cuando existan; mientras tanto, ilustraciones SVG propias.
+
+
+## Versión 2 del sistema visual (noviembre de 2026)
+
+- **Concepto:** "taller técnico premium". Bandas marino (`#0A1A33`) con textura de rejilla tipo plano técnico, superficies claras frías (`#F2F5F9`), aguamarina (`#2EC4B6`) como único acento de acción y cobre (`#C8793A`) como detalle puntual.
+- **Tipografía:** Futura (si está instalada) con respaldo Jost para títulos; IBM Plex Sans para texto corrido.
+- **Iconografía:** SVG de línea propios en `js/iconos.js` (`icono("nombre")` o `<i data-icono="nombre" class="icono"></i>`), con motivos del oficio: taladro, nivel, soporte, tubería de cobre, manómetro, copo, etc.
+- **Fotografía:** imágenes de Unsplash (licencia Unsplash) de instalaciones reales: héroe y portadas de los cursos. Se reemplazan por fotos del equipo cuando existan (campo `imageUrl` del curso en Admin → Cursos).
+- **Movimiento (`js/animaciones.js`):** secuencia de entrada del héroe, revelado único al hacer scroll (`.revelar`), línea de los cuatro pasos, barras de progreso que crecen y micro-interacciones en botones y tarjetas. Todo se desactiva con `prefers-reduced-motion`.
+- Los nombres de clase e IDs de la versión 1 se conservan: la lógica de JS no cambió.

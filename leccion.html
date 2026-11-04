@@ -6,11 +6,12 @@
   <title>Aula · AMARAM TV</title>
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/estilos.css">
+  <style>.aula-fondo{background:linear-gradient(180deg,var(--azul-oscuro) 0,var(--azul-oscuro) 210px,var(--fondo) 210px)}.aula-fondo h1,.aula-fondo .migas,.aula-fondo .migas a,.aula-fondo #resumen-avance{color:#fff}.aula-fondo .progreso{background:rgba(255,255,255,.18)}</style>
 </head>
 <body>
   <header id="header"></header>
   <main>
-    <section class="seccion seccion--compacta">
+    <section class="seccion seccion--compacta aula-fondo">
       <div class="contenedor">
         <p class="migas"><a href="mis-cursos.html">Mis cursos</a> › <span id="miga-curso">Curso</span></p>
         <div class="fila fila--entre mb-5">
@@ -29,13 +30,13 @@
             <h2 id="titulo-leccion"></h2>
             <div class="video" id="video"></div>
             <div class="contenido-leccion" id="contenido"></div>
-            <div class="fila mt-3" id="zona-material" hidden><a class="boton boton--contorno boton--sm" id="enlace-material" href="#" target="_blank" rel="noopener">⬇ Descargar material</a></div>
+            <div class="fila mt-3" id="zona-material" hidden><a class="boton boton--contorno boton--sm" id="enlace-material" href="#" target="_blank" rel="noopener">Descargar material</a></div>
             <div class="aula__navegacion">
-              <a class="boton boton--contorno" id="anterior" href="#">← Anterior</a>
+              <a class="boton boton--contorno" id="anterior" href="#">Anterior</a>
               <button class="boton boton--primario" id="boton-completar" type="button">Marcar como completada</button>
-              <a class="boton boton--contorno" id="siguiente" href="#">Siguiente →</a>
+              <a class="boton boton--contorno" id="siguiente" href="#">Siguiente</a>
             </div>
-            <div class="mensaje mensaje--exito mt-5" id="felicitacion" hidden>🎉 ¡Completaste el curso! Tu certificado quedará disponible en <a href="perfil.html">Mi perfil</a>.</div>
+            <div class="mensaje mensaje--exito mt-5" id="felicitacion" hidden>¡Completaste el curso! Tu certificado quedará disponible en <a href="perfil.html">Mi perfil</a>.</div>
           </div>
         </div>
       </div>

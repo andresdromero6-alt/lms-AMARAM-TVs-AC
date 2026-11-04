@@ -5,6 +5,7 @@
 // el progreso en la colección progress con ID uid_lessonId.
 // =====================================================================
 import { $, parametro, escapar, aviso, requerirSesion, esAdmin, youtubeEmbed } from "./app.js";
+import { icono } from "./iconos.js";
 import { obtenerCurso, obtenerLecciones, obtenerProgreso, tieneInscripcion, marcarCompletada, desmarcarCompletada } from "./db.js";
 
 const usuario = await requerirSesion();
@@ -40,7 +41,7 @@ if (usuario) {
         let html = "", mod = null;
         lecciones.forEach(l => {
           if (l.moduleNumber !== mod) { mod = l.moduleNumber; html += `<div class="aula__modulo">Módulo ${mod} · ${escapar(l.moduleName)}</div>`; }
-          html += `<a class="aula__leccion" href="leccion.html?curso=${encodeURIComponent(curso.id)}&leccion=${encodeURIComponent(l.id)}" ${l.id === actualId ? 'aria-current="page"' : ""}><span class="marca ${hechas.has(l.id) ? "marca--hecha" : ""}">${hechas.has(l.id) ? "✓" : ""}</span><span>${escapar(l.title)}</span></a>`;
+          html += `<a class="aula__leccion" href="leccion.html?curso=${encodeURIComponent(curso.id)}&leccion=${encodeURIComponent(l.id)}" ${l.id === actualId ? 'aria-current="page"' : ""}><span class="marca ${hechas.has(l.id) ? "marca--hecha" : ""}">${hechas.has(l.id) ? icono("check", "icono") : ""}</span><span>${escapar(l.title)}</span></a>`;
         });
         $("#lista-lecciones").innerHTML = html || `<p class="texto-sm texto-suave" style="padding:1rem">Este curso aún no tiene lecciones.</p>`;
       };
@@ -60,7 +61,7 @@ if (usuario) {
           ? `<iframe src="${escapar(embed)}" title="${escapar(leccion.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
           : `<div class="video__vacio"><div><strong>Video en preparación</strong><br><span class="texto-sm">El instructor aún no publica el video de esta lección.</span></div></div>`;
         $("#contenido").innerHTML = (leccion.content || "").split(/\n{2,}/).map(p => `<p>${escapar(p).replace(/\n/g, "<br>")}</p>`).join("") || "<p>Sin notas para esta lección.</p>";
-        if (leccion.materialUrl) { $("#zona-material").hidden = false; $("#enlace-material").href = leccion.materialUrl; $("#enlace-material").textContent = `⬇ ${leccion.materialName || "Descargar material"}`; }
+        if (leccion.materialUrl) { $("#zona-material").hidden = false; $("#enlace-material").href = leccion.materialUrl; $("#enlace-material").textContent = leccion.materialName || "Descargar material"; }
 
         const ant = lecciones[idx - 1], sig = lecciones[idx + 1];
         const enlace = (l) => `leccion.html?curso=${encodeURIComponent(curso.id)}&leccion=${encodeURIComponent(l.id)}`;
@@ -68,7 +69,7 @@ if (usuario) {
         if (sig) $("#siguiente").href = enlace(sig); else { $("#siguiente").textContent = "Volver a Mis cursos"; $("#siguiente").href = "mis-cursos.html"; }
 
         const boton = $("#boton-completar");
-        const pintarBoton = () => { const ok = hechas.has(leccion.id); boton.textContent = ok ? "✓ Completada (deshacer)" : "Marcar como completada"; boton.className = ok ? "boton boton--contorno" : "boton boton--primario"; };
+        const pintarBoton = () => { const ok = hechas.has(leccion.id); boton.innerHTML = ok ? `${icono("check")} Completada (deshacer)` : "Marcar como completada"; boton.className = ok ? "boton boton--contorno" : "boton boton--primario"; };
         pintarBoton();
         boton.addEventListener("click", async () => {
           boton.disabled = true;

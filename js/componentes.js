@@ -5,24 +5,25 @@ import { escapar, formatoCOP } from "./app.js";
 import { crearLead } from "./db.js";
 import { usuarioActual } from "./app.js";
 import { notificarLead } from "./pagos.js";
+import { icono } from "./iconos.js";
 
 /** Tarjeta de curso para catálogo e inicio. */
 export function tarjetaCurso(c) {
   const imagen = c.imageUrl ? `<img src="${escapar(c.imageUrl)}" alt="" loading="lazy">` : "";
   return `
-  <article class="curso-tarjeta">
+  <article class="curso-tarjeta revelar">
     <a class="curso-tarjeta__imagen" href="curso.html?id=${encodeURIComponent(c.id)}" aria-hidden="true" tabindex="-1">${imagen}<span class="insignia">${escapar(c.level || "")}</span></a>
     <div class="curso-tarjeta__cuerpo">
       <span class="texto-xs texto-tenue">${escapar(c.category || "")}</span>
       <h3><a href="curso.html?id=${encodeURIComponent(c.id)}">${escapar(c.title)}</a></h3>
       <p class="texto-sm texto-suave mb-0">${escapar(c.promise || c.description || "")}</p>
       <div class="curso-tarjeta__meta">
-        <span>⏱ ${escapar(c.duration || `${c.lessonCount || 0} lecciones`)}</span>
-        <span>👤 ${escapar(c.instructorName || "")}</span>
+        <span>${icono("reloj")} ${escapar(c.duration || `${c.lessonCount || 0} lecciones`)}</span>
+        <span>${icono("usuarios")} ${escapar(c.instructorName || "")}</span>
       </div>
       <div class="curso-tarjeta__pie">
         <span class="precio">${formatoCOP(c.price)} <small>COP</small></span>
-        <a class="boton boton--secundario boton--sm" href="curso.html?id=${encodeURIComponent(c.id)}">Ver curso</a>
+        <a class="boton boton--secundario boton--sm" href="curso.html?id=${encodeURIComponent(c.id)}">Ver curso ${icono("flecha")}</a>
       </div>
     </div>
   </article>`;

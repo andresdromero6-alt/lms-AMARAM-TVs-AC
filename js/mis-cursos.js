@@ -26,8 +26,8 @@ if (usuario) {
         const siguiente = lecciones.find(l => !hechas.has(l.id)) || lecciones[0];
         const enlace = siguiente ? `leccion.html?curso=${encodeURIComponent(curso.id)}&leccion=${encodeURIComponent(siguiente.id)}` : `leccion.html?curso=${encodeURIComponent(curso.id)}`;
         return `
-        <article class="curso-tarjeta">
-          <div class="curso-tarjeta__imagen">${curso.imageUrl ? `<img src="${escapar(curso.imageUrl)}" alt="">` : ""}${pct === 100 ? `<span class="insignia insignia--exito">✓ Completado</span>` : ""}</div>
+        <article class="curso-tarjeta revelar">
+          <div class="curso-tarjeta__imagen">${curso.imageUrl ? `<img src="${escapar(curso.imageUrl)}" alt="">` : ""}${pct === 100 ? `<span class="insignia insignia--exito">Completado</span>` : ""}</div>
           <div class="curso-tarjeta__cuerpo">
             <h3>${escapar(curso.title)}</h3>
             <p class="texto-sm texto-suave mb-0">${completadas} de ${total} lecciones completadas</p>

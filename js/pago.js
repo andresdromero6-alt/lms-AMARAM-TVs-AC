@@ -8,6 +8,7 @@ import { $, parametro, escapar, requerirSesion } from "./app.js";
 import { obtenerCurso, tieneInscripcion } from "./db.js";
 import { verificarPago } from "./pagos.js";
 import { PAGOS_ACTIVOS } from "./firebase-config.js";
+import { icono } from "./iconos.js";
 
 const usuario = await requerirSesion();
 if (usuario) {
@@ -18,7 +19,7 @@ if (usuario) {
 
   const pintar = (tipo, titulo, texto, acciones) => {
     $("#icono").className = `resultado__icono resultado__icono--${tipo}`;
-    $("#icono").textContent = { exito: "✓", pendiente: "⏱", error: "✕" }[tipo];
+    $("#icono").innerHTML = icono({ exito: "check", pendiente: "reloj", error: "cerrar" }[tipo], "icono icono--xl");
     $("#titulo").textContent = titulo; $("#texto").textContent = texto; $("#acciones").innerHTML = acciones;
     const d = $("#detalle"); d.hidden = false;
     d.innerHTML = `${curso ? `<dt>Curso</dt><dd>${escapar(curso.title)}</dd>` : ""}${paymentId ? `<dt>ID del pago</dt><dd>${escapar(paymentId)}</dd>` : ""}${estado ? `<dt>Estado en Wompi</dt><dd>${escapar(estado)}</dd>` : ""}<dt>Cuenta</dt><dd>${escapar(usuario.email)}</dd>`;

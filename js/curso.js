@@ -23,6 +23,7 @@ if (!curso || (curso.published === false && perfilActual()?.role !== "admin")) {
   $("#titulo").textContent = curso.title;
   $("#promesa").textContent = curso.promise || "";
   $("#portada").innerHTML = curso.imageUrl ? `<img src="${escapar(curso.imageUrl)}" alt="Portada del curso ${escapar(curso.title)}">` : "";
+  const fondo = $("#portada-fondo"); if (fondo && curso.imageUrl) fondo.innerHTML = `<img src="${escapar(curso.imageUrl)}" alt="">`;
   $("#descripcion").textContent = curso.description || "";
   $("#publico").textContent = curso.audience || "";
   $("#requisitos").innerHTML = (curso.requirements || []).map(r => `<li>${escapar(r)}</li>`).join("") || "<li>Ninguno: empezamos desde cero.</li>";

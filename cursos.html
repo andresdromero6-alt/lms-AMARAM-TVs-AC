@@ -11,7 +11,8 @@
 <body>
   <header id="header"></header>
   <main>
-    <section class="seccion seccion--oscura seccion--compacta">
+    <section class="portada">
+      <div class="portada__foto" aria-hidden="true"><img src="https://images.unsplash.com/photo-1623161551706-318825cd18ef?auto=format&fit=crop&w=1600&q=70" alt="" loading="eager"></div>
       <div class="contenedor">
         <span class="etiqueta-seccion">Catálogo</span>
         <h1>Todos los cursos</h1>
@@ -20,7 +21,7 @@
     </section>
     <section class="seccion">
       <div class="contenedor">
-        <form class="fila mb-5" id="filtros" aria-label="Filtrar cursos" onsubmit="return false">
+        <form class="fila mb-5 tarjeta" id="filtros" style="align-items:flex-end" aria-label="Filtrar cursos" onsubmit="return false">
           <div class="campo">
             <label for="filtro-categoria">Categoría</label>
             <select id="filtro-categoria"><option value="">Todas</option></select>
