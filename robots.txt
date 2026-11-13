@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /leccion.html
+Disallow: /pago.html
+Disallow: /mis-cursos.html
+Disallow: /perfil.html
+
+Sitemap: https://andresdromero6-alt.github.io/lms-AMARAM-TVs-AC/sitemap.xml

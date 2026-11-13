@@ -17,7 +17,26 @@ if (!curso || (curso.published === false && perfilActual()?.role !== "admin")) {
   $("#titulo").textContent = "Curso no disponible";
   $("#no-encontrado").hidden = false;
 } else {
-  document.title = `${curso.title} · AMARAM TV`;
+  document.title = `${curso.title} | Curso en línea | AMARAM TV`;
+  // SEO: metadatos y datos estructurados del curso (Google renderiza JS; también ayuda al compartir el enlace)
+  const urlCanon = `https://andresdromero6-alt.github.io/lms-AMARAM-TVs-AC/curso.html?id=${encodeURIComponent(curso.id)}`;
+  const meta = (sel, valor) => { const el = document.querySelector(sel); if (el) el.setAttribute("content", valor); };
+  meta('meta[name="description"]', curso.promise || curso.description || "");
+  meta('meta[property="og:title"]', `${curso.title} | AMARAM TV`);
+  meta('meta[property="og:description"]', curso.promise || "");
+  meta('meta[property="og:url"]', urlCanon);
+  if (curso.imageUrl) meta('meta[property="og:image"]', curso.imageUrl);
+  document.querySelector('link[rel="canonical"]')?.setAttribute("href", urlCanon);
+  const ld = document.createElement("script"); ld.type = "application/ld+json";
+  ld.textContent = JSON.stringify({
+    "@context": "https://schema.org", "@type": "Course", name: curso.title, description: curso.description || curso.promise || "",
+    url: urlCanon, image: curso.imageUrl || undefined, educationalLevel: curso.level || undefined,
+    provider: { "@type": "EducationalOrganization", name: "AMARAM TV", url: "https://andresdromero6-alt.github.io/lms-AMARAM-TVs-AC/" },
+    instructor: curso.instructorName ? { "@type": "Person", name: curso.instructorName } : undefined,
+    offers: { "@type": "Offer", price: curso.price || 0, priceCurrency: "COP", availability: "https://schema.org/InStock", url: urlCanon },
+    hasCourseInstance: { "@type": "CourseInstance", courseMode: "online", courseWorkload: curso.duration || undefined }
+  });
+  document.head.appendChild(ld);
   $("#miga-curso").textContent = curso.title;
   $("#categoria").textContent = curso.category || "";
   $("#titulo").textContent = curso.title;
