@@ -35,7 +35,7 @@ export const NEGOCIO = {
 
 // Analítica (se carga solo si el visitante acepta las cookies; ver js/cookies.js y docs/analitica.md)
 export const ANALITICA = {
-  ga4: "",        // ID de medición de Google Analytics 4, p. ej. "G-XXXXXXXXXX"
+  ga4: "G-BF3M4ZXL0J",  // ID de medición de Google Analytics 4, p. ej. "G-XXXXXXXXXX"
   clarity: ""     // ID del proyecto de Microsoft Clarity, p. ej. "abcdefghij"
 };
 
