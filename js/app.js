@@ -9,6 +9,7 @@ import { auth, fa, MODO_DEMO, crearPerfilSiNoExiste, obtenerPerfil } from "./db.
 import { NEGOCIO, PAGOS_ACTIVOS } from "./firebase-config.js";
 import { icono } from "./iconos.js";
 import "./animaciones.js";
+import "./cookies.js";
 
 export const LOGO_SVG = `<svg class="logo__marca" viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="5" width="36" height="25" rx="5" fill="#2EC4B6"/><rect x="5.5" y="8.5" width="29" height="18" rx="2.5" fill="#0A1A33"/><path d="M13 34h14M20 30v4" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round"/><path d="M10 20.5c3-6 6.5-6 10 0s7 6 10 0" stroke="#8FF0E4" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="29" cy="12.5" r="1.6" fill="#C8793A"/></svg>`;
 
@@ -144,6 +145,7 @@ function pintarFooter() {
           <li>${icono("escudo")}<a href="legales.html">Política de datos</a></li>
           <li>${icono("libro")}<a href="legales.html#terminos">Términos y condiciones</a></li>
           <li>${icono("tarjeta")}<a href="legales.html#reembolso">Política de reembolso</a></li>
+          <li>${icono("escudo")}<a href="legales.html#cookies">Política de cookies</a> · <a href="#" data-abrir-cookies>Preferencias</a></li>
         </ul></div>
       </div>
       <div class="footer__pie">

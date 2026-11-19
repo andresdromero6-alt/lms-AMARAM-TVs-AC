@@ -9,6 +9,7 @@ import { MODO_DEMO, obtenerCurso, obtenerTemario, obtenerInstructores, tieneInsc
 import { PAGOS_ACTIVOS } from "./firebase-config.js";
 import { temario, conectarFormularioInteres } from "./componentes.js";
 import { crearPago } from "./pagos.js";
+import { evento } from "./cookies.js";
 
 const id = parametro("id");
 const curso = id ? await obtenerCurso(id) : null;
@@ -85,6 +86,7 @@ if (!curso || (curso.published === false && perfilActual()?.role !== "admin")) {
     boton.addEventListener("click", async () => {
       boton.disabled = true; boton.textContent = "Creando tu pago…";
       try {
+        evento("begin_checkout", { curso: curso.id, valor: curso.price, moneda: "COP" });
         const url = await crearPago({ courseId: curso.id, uid: usuario.uid, email: usuario.email, name: perfilActual()?.name || usuario.displayName || "" });
         location.href = url;
       } catch (err) {

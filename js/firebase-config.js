@@ -33,5 +33,11 @@ export const NEGOCIO = {
   ciudad: "Colombia"
 };
 
+// Analítica (se carga solo si el visitante acepta las cookies; ver js/cookies.js y docs/analitica.md)
+export const ANALITICA = {
+  ga4: "",        // ID de medición de Google Analytics 4, p. ej. "G-XXXXXXXXXX"
+  clarity: ""     // ID del proyecto de Microsoft Clarity, p. ej. "abcdefghij"
+};
+
 export const MODO_DEMO = firebaseConfig.projectId.startsWith("REEMPLAZAR");
 export const PAGOS_ACTIVOS = !APPS_SCRIPT_URL.startsWith("REEMPLAZAR");

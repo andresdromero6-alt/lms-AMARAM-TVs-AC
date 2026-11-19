@@ -36,7 +36,7 @@ js/auth.js · cursos.js · curso.js · mis-cursos.js · leccion.js · perfil.js 
 js/admin*.js               panel: reportes, cursos, lecciones, inscripciones, usuarios, CRM, instructores, recursos, calendario
 backend/Code.gs            Apps Script: crear pago, webhook, verificación, correos (copia del código en script.google.com)
 firestore.rules            reglas de seguridad (paywall, roles)
-docs/                      equipo, cursos, modelo de datos, mapa del sitio, guía de estilo, bitácora de IA, actas, pruebas, seguridad, despliegue, backlog
+docs/                      equipo, cursos, modelo de datos, mapa del sitio, guía de estilo, branding, gestión financiera, legal, analítica, SEO, bitácora de IA, actas, pruebas, seguridad, despliegue, backlog
 scripts/crear-issues.sh    crea los 59 Issues del backlog con Milestones por sprint
 CONTEXTO.md                memoria del proyecto para la IA y el equipo
 ```
@@ -47,6 +47,18 @@ CONTEXTO.md                memoria del proyecto para la IA y el equipo
 3. **Pagos:** crear el script en Apps Script, poner el los secretos de Wompi (integridad y eventos) en Propiedades del script, publicar como aplicación web y pegar la URL `/exec` ([backend/README.md](backend/README.md)).
 4. **Contenido:** subir videos y materiales y pegar los enlaces en Admin → Lecciones.
 5. **Tablero:** ya creado en [GitHub Projects](https://github.com/users/andresdromero6-alt/projects/1); los 59 Issues del backlog existen con Milestones por sprint.
+6. **Analítica:** crear la propiedad de Google Analytics 4 y el proyecto de Microsoft Clarity y pegar los IDs en `ANALITICA` de `js/firebase-config.js`; se cargan solo con consentimiento de cookies ([docs/analitica.md](docs/analitica.md)).
+
+## Cumplimiento, marca y gestión
+| Tema | Dónde está |
+|---|---|
+| Cookies (banner de consentimiento y política) | `js/cookies.js`, `legales.html#cookies`, [docs/legal.md](docs/legal.md) |
+| Tratamiento de datos personales (Ley 1581 de 2012) | `legales.html#datos`, casilla de autorización en formularios, [docs/legal.md](docs/legal.md) |
+| Términos y condiciones y reembolso | `legales.html#terminos`, `legales.html#reembolso` |
+| Google Analytics 4 y Microsoft Clarity | `js/cookies.js`, [docs/analitica.md](docs/analitica.md) |
+| Google Search Console y SEO | `sitemap.xml`, `robots.txt`, metadatos y schema.org, [docs/seo-search-console.md](docs/seo-search-console.md) |
+| Branding (metodología Summa) | [docs/branding.md](docs/branding.md), [docs/guia-de-estilo.md](docs/guia-de-estilo.md), `img/logo-amaram-tv.png` |
+| Gestión financiera (costos y gastos) | [docs/gestion-financiera.md](docs/gestion-financiera.md) |
 
 Para probar en el computador: `python3 -m http.server 8000` y abre `http://localhost:8000` (no uses doble clic sobre los `.html`).
 

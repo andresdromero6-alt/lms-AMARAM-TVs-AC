@@ -6,6 +6,7 @@ import { crearLead } from "./db.js";
 import { usuarioActual } from "./app.js";
 import { notificarLead } from "./pagos.js";
 import { icono } from "./iconos.js";
+import { evento } from "./cookies.js";
 
 /** Tarjeta de curso para catálogo e inicio. */
 export function tarjetaCurso(c) {
@@ -69,6 +70,7 @@ export function conectarFormularioInteres(form, { source = "landing", cursoFijo 
       const courseInterest = cursoFijo || datos.courseInterest || "";
       const leadId = await crearLead({ ...datos, consent: true, source, courseInterest, userId: usuarioActual()?.uid || null });
       notificarLead({ leadId, name: datos.name, email: datos.email, courseInterest }); // correo de bienvenida (no bloquea)
+      evento("generate_lead", { curso: courseInterest || "sin definir", origen: source });
       form.reset();
       mensaje.hidden = false; mensaje.className = "mensaje mensaje--exito";
       mensaje.textContent = "¡Listo! Recibimos tus datos. Un instructor te escribirá muy pronto.";
