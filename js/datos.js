@@ -76,7 +76,8 @@ const VIDEO = {
 };
 // Videos asignados a una lección concreta (tienen prioridad sobre el video del módulo).
 const VIDEO_LECCION = {
-  "mini-split-smart-tv_m1-l1": "video/mini-split-smart-tv-m1-l1.mp4"
+  "mini-split-smart-tv_m1-l1": "video/mini-split-smart-tv-m1-l1.mp4",
+  "mini-split-smart-tv_m1-l2": "video/mini-split-smart-tv-m1-l2.mp4"
 };
 const L = (courseId, m, l, moduleName, title, durationMin = 25) => ({
   id: `${courseId}_m${m}-l${l}`,
