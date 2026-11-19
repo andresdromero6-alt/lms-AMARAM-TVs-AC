@@ -74,6 +74,10 @@ const VIDEO = {
   "montaje-smart-tv": { 1: "video/montaje-smart-tv-m1.mp4", 2: "video/montaje-smart-tv-m2.mp4" },
   "mini-split-smart-tv": { 1: "https://www.youtube.com/watch?v=Aqq_7399c0M", 2: "https://www.youtube.com/watch?v=Aqq_7399c0M", 3: "https://www.youtube.com/watch?v=Aqq_7399c0M", 4: "https://www.youtube.com/watch?v=Aqq_7399c0M" }
 };
+// Videos asignados a una lección concreta (tienen prioridad sobre el video del módulo).
+const VIDEO_LECCION = {
+  "mini-split-smart-tv_m1-l1": "video/mini-split-smart-tv-m1-l1.mp4"
+};
 const L = (courseId, m, l, moduleName, title, durationMin = 25) => ({
   id: `${courseId}_m${m}-l${l}`,
   courseId,
@@ -81,7 +85,7 @@ const L = (courseId, m, l, moduleName, title, durationMin = 25) => ({
   moduleName,
   order: m * 10 + l,
   title,
-  videoUrl: (courseId === "mini-split-smart-tv" && m === 4 && l === 2) ? "" : (VIDEO[courseId]?.[m] || ""),
+  videoUrl: VIDEO_LECCION[`${courseId}_m${m}-l${l}`] ?? ((courseId === "mini-split-smart-tv" && m === 4 && l === 2) ? "" : (VIDEO[courseId]?.[m] || "")),
   content: `En esta lección verás: ${title} Toma apuntes y, al terminar, marca la lección como completada para registrar tu avance.`,
   materialUrl: "",         // [EJEMPLO] pegar enlace de Google Drive
   materialName: "",
