@@ -80,7 +80,8 @@ const VIDEO_LECCION = {
   "mini-split-smart-tv_m1-l2": "video/mini-split-smart-tv-m1-l2.mp4",
   "mini-split-smart-tv_m2-l1": "video/mini-split-smart-tv-m2-l1.mp4",
   "mini-split-smart-tv_m2-l2": "video/mini-split-smart-tv-m2-l2.mp4",
-  "mini-split-smart-tv_m3-l1": "video/mini-split-smart-tv-m3-l1.mp4"
+  "mini-split-smart-tv_m3-l1": "video/mini-split-smart-tv-m3-l1.mp4",
+  "mini-split-smart-tv_m3-l2": "video/mini-split-smart-tv-m3-l2.mp4"
 };
 const L = (courseId, m, l, moduleName, title, durationMin = 25) => ({
   id: `${courseId}_m${m}-l${l}`,
