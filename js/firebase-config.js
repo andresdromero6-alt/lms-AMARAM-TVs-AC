@@ -36,7 +36,7 @@ export const NEGOCIO = {
 // Analítica (se carga solo si el visitante acepta las cookies; ver js/cookies.js y docs/analitica.md)
 export const ANALITICA = {
   ga4: "G-BF3M4ZXL0J",  // ID de medición de Google Analytics 4, p. ej. "G-XXXXXXXXXX"
-  clarity: ""     // ID del proyecto de Microsoft Clarity, p. ej. "abcdefghij"
+  clarity: "zg97od1kgk"  // ID del proyecto de Microsoft Clarity, p. ej. "abcdefghij"
 };
 
 export const MODO_DEMO = firebaseConfig.projectId.startsWith("REEMPLAZAR");
